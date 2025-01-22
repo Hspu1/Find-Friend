@@ -11,6 +11,6 @@ app = FastAPI(
 
 if __name__ == '__main__':
     run(
-        app="app/main:app", reload=False, use_colors=True,
+        app="main:app", reload=False, use_colors=True,
         host="127.0.0.1", port=8000
     )
