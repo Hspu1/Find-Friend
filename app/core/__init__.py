@@ -9,4 +9,4 @@ __all__ = (
 )
 
 from .config import db_url, async_session_maker, Base
-from models import AuthModel, ContactsModel, UsersModel
+from .models import AuthModel, ContactsModel, UsersModel

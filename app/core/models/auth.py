@@ -9,4 +9,4 @@ class AuthModel(Base):
     auth_id = Column(type_=Integer, primary_key=True, autoincrement=True)
 
     username = Column(type_=String(20), nullable=False, unique=True)
-    hashed_psw = Column(type=String(100), nullable=False, unique=True)
+    hashed_psw = Column(type_=String(100), nullable=False, unique=True)
