@@ -10,8 +10,8 @@ class UsersModel(Base):
 
     auth_id = Column(type_=Integer, primary_key=True, autoincrement=True)
 
-    username = Column(type_=String(20), nullable=False, unique=True)
-    age = Column(type_=Integer, nullable=False)
+    username = Column(type_=String(20), nullable=False, unique=True, index=True)
+    age = Column(type_=Integer, nullable=False, index=True)
 
     hobbies = Column(type_=String(50), nullable=True)
     bio = Column(type_=String(100), nullable=True)
