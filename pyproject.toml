@@ -17,7 +17,12 @@ dependencies = [
     "alembic (>=1.14.1,<2.0.0)",
     "asyncpg (>=0.30.0,<0.31.0)"
 ]
+# poetry add fastapi uvicorn[standart] orjson pydantic pydantic-settings sqlalchemy[asyncio] alembic asyncpg
 
+# .gitignore
+# /venv/
+# /.idea/
+# .env
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
