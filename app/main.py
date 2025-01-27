@@ -3,7 +3,6 @@ import os
 from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 from fastui import FastUI, AnyComponent, components as c, prebuilt_html
-from fastui.components import Link
 from fastui.events import GoToEvent
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
