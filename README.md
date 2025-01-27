@@ -1,2 +1,2 @@
 # Find-Friend
-![2025-01-27_22-48-32](https://github.com/user-attachments/assets/cd1f93f5-281e-4d28-b8a8-d4207b45a557)
+![2025-01-27_23-36-56](https://github.com/user-attachments/assets/789505e8-3a2d-4a0d-8a1c-95b1f87527b1)
