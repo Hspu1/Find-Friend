@@ -1,18 +1,54 @@
-from datetime import date
+import os
 
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse, ORJSONResponse
-from fastui import FastUI, AnyComponent, prebuilt_html, components as c
+from authlib.integrations.starlette_client import OAuth
+from dotenv import load_dotenv
+from fastapi import FastAPI, Request
+from fastapi.responses import ORJSONResponse
+from fastui import FastUI, AnyComponent, components as c
 from fastui.components import Link
-from fastui.components.display import DisplayMode, DisplayLookup
-from fastui.events import GoToEvent, BackEvent
-from pydantic import BaseModel, Field
+from starlette.middleware.cors import CORSMiddleware
 from uvicorn import run
+
+
+load_dotenv()
 
 app = FastAPI(
     default_response_class=ORJSONResponse,
     title="Find Friend"
 )
+
+
+origins = [
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+]
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "OPTIONS"],
+    allow_headers=["*"],
+)
+
+
+oauth = OAuth()
+oauth.register(
+    name='google',
+    client_id=os.getenv("GOOGLE_CLIENT_ID"),
+    client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_kwargs={
+        'scope': 'openid email profile'
+    },
+)
+
+
+@app.get(path="/login", tags=["auth"], status_code=200)
+async def login(request: Request):
+    redirect_uri = request.url_for('auth')
+    return await oauth.google.authorize_redirect(request, redirect_uri)
 
 
 # class User(BaseModel):
