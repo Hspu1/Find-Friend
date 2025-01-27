@@ -9,12 +9,14 @@ from uvicorn import run
 from app.frontend import homepage_router
 from app.google_auth import google_auth_router
 
+
 app = FastAPI(
     default_response_class=ORJSONResponse,
     title="Find Friend"
 )
 app.include_router(homepage_router)
 app.include_router(google_auth_router)
+
 
 app.add_middleware(
     SessionMiddleware,
