@@ -1,31 +1,17 @@
-# from fastapi import FastAPI
-# from fastapi.responses import ORJSONResponse, HTMLResponse
-# from uvicorn import run
-# from fastui import FastUI, components as c
-#
-#
-# app = FastAPI(
-#     default_response_class=ORJSONResponse,
-#     title="Find Friend"
-# )
-#
-#
-# if __name__ == '__main__':
-#     run(
-#         app="main:app", reload=False, use_colors=True,
-#         host="127.0.0.1", port=8000
-#     )
 from datetime import date
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, ORJSONResponse
 from fastui import FastUI, AnyComponent, prebuilt_html, components as c
 from fastui.components.display import DisplayMode, DisplayLookup
 from fastui.events import GoToEvent, BackEvent
 from pydantic import BaseModel, Field
 from uvicorn import run
 
-app = FastAPI()
+app = FastAPI(
+    default_response_class=ORJSONResponse,
+    title="Find Friend"
+)
 
 
 class User(BaseModel):
