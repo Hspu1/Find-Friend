@@ -16,10 +16,11 @@ dependencies = [
     "alembic (>=1.14.1,<2.0.0)",
     "asyncpg (>=0.30.0,<0.31.0)",
     "fastui (>=0.7.0,<0.8.0)",
-    "pydantic (==2.9.2)",
+    "pydantic (>=2.10.6,<3.0.0)",
     "python-multipart (>=0.0.20,<0.0.21)"
 ]
-# poetry add fastapi uvicorn[standart] orjson pydantic pydantic-settings sqlalchemy[asyncio] alembic asyncpg
+# pip install poetry
+# poetry add fastapi uvicorn[standart] orjson pydantic pydantic-settings sqlalchemy[asyncio] alembic asyncpg python-multipart
 
 # .gitignore
 # /venv/
