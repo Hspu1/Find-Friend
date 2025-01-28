@@ -28,7 +28,7 @@ oauth.register(
 async def auth(request: Request):
     try:
         if request.query_params["error"] == "access_denied":
-            return RedirectResponse(url="/access_denied_error")
+            return RedirectResponse(url="/auth_denied")
 
     except KeyError:
         token = await oauth.google.authorize_access_token(request)
@@ -39,14 +39,6 @@ async def auth(request: Request):
         fake_firstnames_db.append(firstname)
 
         return RedirectResponse(url='/login_with_name')
-
-
-@google_auth_router.get(path="/access_denied_error", status_code=403)
-def access_denied_error():
-    return HTTPException(
-        status_code=403,
-        detail="authorization was denied by the user"
-    )
 
 
 @google_auth_router.get(path="/login", status_code=200)
