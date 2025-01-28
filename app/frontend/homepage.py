@@ -53,7 +53,7 @@ def html_landing():
                 alt="Find Friend Logo" 
                 class="center-image"
             >
-            <button onclick="window.location.href='http://127.0.0.1:8000/login'">Sign in with Google</button>
+            <button onclick="window.location.href='http://127.0.0.1:8000/login'">Войти через Google</button>
         </div>
     </body>
     </html>
