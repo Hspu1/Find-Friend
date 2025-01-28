@@ -41,6 +41,7 @@ def html_landing():
                     padding: 20px 40px;
                     cursor: pointer;
                     font-size: 18px;
+                    font-weight: bold;
                 }}
             </style>
         </head>

@@ -43,6 +43,7 @@ def html_landing():
                 border: none;
                 padding: 10px 20px;
                 cursor: pointer;
+                font-weight: bold;
             }
         </style>
     </head>

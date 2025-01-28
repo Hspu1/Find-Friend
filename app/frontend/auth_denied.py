@@ -33,7 +33,9 @@ def html_landing():
                 }}
                 .message {{
                     color: white;
-                    font-size: 24px;
+                    font-size: 28px;
+                    font-weight: bold;
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
                     text-align: center;
                 }}
                 button {{
@@ -43,6 +45,7 @@ def html_landing():
                     padding: 20px 40px;
                     cursor: pointer;
                     font-size: 18px;
+                    font-weight: bold;
                 }}
             </style>
         </head>
