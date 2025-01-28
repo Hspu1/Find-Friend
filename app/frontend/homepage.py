@@ -6,6 +6,8 @@ homepage_router = APIRouter()
 
 @homepage_router.get("/", response_class=HTMLResponse)
 def html_landing():
+    # Было принято решение перейти с FastUI на полноценный фронтенд
+    # Пока полностью, возможно, дальше будет частично
     return """
     <!DOCTYPE html>
     <html>
