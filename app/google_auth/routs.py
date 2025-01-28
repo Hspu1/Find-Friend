@@ -7,6 +7,8 @@ from starlette.responses import RedirectResponse
 
 google_auth_router = APIRouter()
 
+fake_firstnames_db = []
+
 
 load_dotenv()
 
@@ -30,9 +32,13 @@ async def auth(request: Request):
 
     except KeyError:
         token = await oauth.google.authorize_access_token(request)
-        request.session['user'] = token.get("userinfo")
+        user_info = token.get("userinfo")
+        request.session['user'] = user_info
 
-        return RedirectResponse(url='/')
+        firstname = user_info.get('given_name')
+        fake_firstnames_db.append(firstname)
+
+        return RedirectResponse(url='/login_with_name')
 
 
 @google_auth_router.get(path="/access_denied_error", status_code=403)

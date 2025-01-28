@@ -6,7 +6,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 from uvicorn import run
 
-from app.frontend import homepage_router
+from app.frontend import homepage_router, login_with_name_router
 from app.google_auth import google_auth_router
 
 
@@ -16,6 +16,7 @@ app = FastAPI(
 )
 app.include_router(homepage_router)
 app.include_router(google_auth_router)
+app.include_router(login_with_name_router)
 
 
 app.add_middleware(
