@@ -51,6 +51,9 @@ def html_landing():
                     Войти как {fake_firstnames_db[-1]}
                 </button>
                 <button onclick="window.location.href='http://127.0.0.1:8000/'">
+                    Изменить имя
+                </button>
+                <button onclick="window.location.href='http://127.0.0.1:8000/'">
                     Назад
                 </button>
             </div>
