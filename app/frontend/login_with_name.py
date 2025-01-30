@@ -50,7 +50,7 @@ def html_landing():
                 <button onclick="window.location.href='http://127.0.0.1:8000/'">
                     Войти как {fake_firstnames_db[-1]}
                 </button>
-                <button onclick="window.location.href='http://127.0.0.1:8000/'">
+                <button onclick="window.location.href='http://127.0.0.1:8000/change_name'">
                     Изменить имя
                 </button>
                 <button onclick="window.location.href='http://127.0.0.1:8000/'">
@@ -59,4 +59,4 @@ def html_landing():
             </div>
         </body>
         </html>
-        """
+    """
