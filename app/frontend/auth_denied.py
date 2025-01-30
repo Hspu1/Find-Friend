@@ -35,7 +35,12 @@ def html_landing():
                     color: white;
                     font-size: 28px;
                     font-weight: bold;
-                    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                    text-shadow: 
+                        2px 2px 0 black, 
+                        -1px -1px 0 black, 
+                        1px -1px 0 black, 
+                        -1px 1px 0 black, 
+                        1px 1px 0 black;
                     text-align: center;
                 }}
                 button {{
