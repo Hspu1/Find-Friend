@@ -7,8 +7,8 @@ from starlette.middleware.sessions import SessionMiddleware
 from uvicorn import run
 
 from app.frontend import (
-    homepage_router, login_with_name_router,
-    auth_denied_router, change_name_router
+    homepage_router, login_with_name_router, auth_denied_router,
+    change_name_router, submit_name_router
 )
 from app.google_auth import google_auth_router
 
@@ -22,6 +22,7 @@ app.include_router(google_auth_router)
 app.include_router(login_with_name_router)
 app.include_router(auth_denied_router)
 app.include_router(change_name_router)
+app.include_router(submit_name_router)
 
 
 app.add_middleware(
