@@ -29,6 +29,7 @@ def submit_name(new_name: str = Form()):
                     flex-direction: column;
                     align-items: center;
                     gap: 20px;
+                    margin-top: 100px;
                 }}
                 h1 {{
                     color: white;
@@ -43,7 +44,7 @@ def submit_name(new_name: str = Form()):
                     border: none;
                     padding: 20px 40px;
                     cursor: pointer;
-                    font-size: 24px;
+                    font-size: 18px;
                     font-weight: bold;
                 }}
             </style>
@@ -51,6 +52,7 @@ def submit_name(new_name: str = Form()):
         <body>
             <div class="container">
                 <h1>Имя изменено на {new_name}</h1>
+                <button onclick="window.location.href='http://127.0.0.1:8000/'">Войти под новым именем</button>
                 <button onclick="window.location.href='http://127.0.0.1:8000/change_name'">Назад</button>
             </div>
         </body>
