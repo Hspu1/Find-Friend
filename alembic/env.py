@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 
 from app.core import (
-    Base, db_url, AuthModel, ContactsModel, UsersModel
+    Base, db_url, ContactsModel, UsersModel
 )
 # (models are) REQUIRED for class `Base`
 
