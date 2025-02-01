@@ -1,7 +1,9 @@
 __all__ = (
     "ContactsModel",
-    "UsersModel"
+    "UsersModel",
+    "AuthModel"
 )
 
 from .contacts import ContactsModel
 from .users import UsersModel
+from .auth import AuthModel

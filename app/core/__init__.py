@@ -4,8 +4,9 @@ __all__ = (
     "Base",
 
     "ContactsModel",
-    "UsersModel"
+    "UsersModel",
+    "AuthModel"
 )
 
 from .config import db_url, async_session_maker, Base
-from .models import ContactsModel, UsersModel
+from .models import ContactsModel, UsersModel, AuthModel
