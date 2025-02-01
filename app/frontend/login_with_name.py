@@ -47,7 +47,7 @@ def html_landing():
         </head>
         <body>
             <div class="button-container">
-                <button onclick="window.location.href='http://127.0.0.1:8000/'">
+                <button onclick="window.location.href='http://127.0.0.1:8000/password_entering'">
                     Войти как {fake_firstnames_db[-1]}
                 </button>
                 <button onclick="window.location.href='http://127.0.0.1:8000/change_name'">

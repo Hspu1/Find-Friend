@@ -8,7 +8,7 @@ from uvicorn import run
 
 from app.frontend import (
     homepage_router, login_with_name_router, auth_denied_router,
-    change_name_router, submit_name_router
+    change_name_router, submit_name_router, password_entering_router
 )
 from app.google_auth import google_auth_router
 
@@ -23,6 +23,7 @@ app.include_router(login_with_name_router)
 app.include_router(auth_denied_router)
 app.include_router(change_name_router)
 app.include_router(submit_name_router)
+app.include_router(password_entering_router)
 
 
 app.add_middleware(

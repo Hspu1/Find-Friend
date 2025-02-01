@@ -52,7 +52,7 @@ def submit_name(new_name: str = Form()):
         <body>
             <div class="container">
                 <h1>Имя изменено на {new_name}</h1>
-                <button onclick="window.location.href='http://127.0.0.1:8000/'">Войти под новым именем</button>
+                <button onclick="window.location.href='http://127.0.0.1:8000/password_entering'">Войти под новым именем</button>
                 <button onclick="window.location.href='http://127.0.0.1:8000/change_name'">Назад</button>
             </div>
         </body>
