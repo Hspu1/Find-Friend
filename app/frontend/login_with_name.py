@@ -5,10 +5,13 @@ from app.google_auth import fake_firstnames_db
 
 
 login_with_name_router = APIRouter()
+fake_new_names_db = []
 
 
 @login_with_name_router.get("/login_with_name", response_class=HTMLResponse)
 def html_landing():
+    fake_new_names_db.append(fake_firstnames_db[-1])
+
     return f"""
         <!DOCTYPE html>
         <html>
