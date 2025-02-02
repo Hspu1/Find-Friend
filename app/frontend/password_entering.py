@@ -67,7 +67,7 @@ def html_landing():
                 function submitPassword() {{
                     const password = document.getElementById('password').value;
                     if (password.length >= 5 && password.length <= 12) {{
-                        window.location.href = 'http://127.0.0.1:8000/';
+                        window.location.href = 'http://127.0.0.1:8000/settings';
                     }} else {{
                         alert('Пароль должен быть от 5 до 12 символов.');
                     }}
