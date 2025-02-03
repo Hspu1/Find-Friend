@@ -41,8 +41,9 @@ def html_landing():
                 background-color: black;
                 color: white;
                 border: none;
-                padding: 10px 20px;
+                padding: 20px 40px;
                 cursor: pointer;
+                font-size: 18px;
                 font-weight: bold;
             }
         </style>
