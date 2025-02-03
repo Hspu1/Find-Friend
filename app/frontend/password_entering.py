@@ -91,7 +91,7 @@ def html_landing():
                                 const errorText = await response.text();
                                 console.error('Ошибка:', errorText);
                                 alert('Пользователь с таким именем уже существует');
-                                window.location.href = 'http://127.0.0.1:8000/';
+                                window.location.href = 'http://127.0.0.1:8000/change_name';
                             }}
                         }} catch (error) {{
                             console.error('Ошибка сети:', error);

@@ -1,6 +1,8 @@
 from fastapi import Form, APIRouter
 from starlette.responses import HTMLResponse
 
+from app.frontend.login_with_name import fake_new_names_db
+
 submit_name_router = APIRouter()
 fake_new_submit_names_db = []
 
@@ -8,6 +10,7 @@ fake_new_submit_names_db = []
 @submit_name_router.post("/submit_name", response_class=HTMLResponse)
 def submit_name(new_name: str = Form()):
     fake_new_submit_names_db.append(new_name)
+    fake_new_names_db.append(new_name)
 
     return f"""
     <!DOCTYPE html>
