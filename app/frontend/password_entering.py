@@ -85,12 +85,13 @@ def html_landing():
                                 body: 'username={new_username}&password=' + encodeURIComponent(password)
                             }});
                             if (response.ok) {{
-                                alert('Пароль сохранен');
-                                window.location.href = 'http://127.0.0.1:8000/';
+                                alert('Данные успешно сохранены');
+                                window.location.href = 'http://127.0.0.1:8000/settings';
                             }} else {{
                                 const errorText = await response.text();
                                 console.error('Ошибка:', errorText);
-                                alert('Ошибка при сохранении пароля');
+                                alert('Пользователь с таким именем уже существует');
+                                window.location.href = 'http://127.0.0.1:8000/';
                             }}
                         }} catch (error) {{
                             console.error('Ошибка сети:', error);

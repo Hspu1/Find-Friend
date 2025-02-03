@@ -26,7 +26,7 @@ def html_landing():
                 background-attachment: fixed;
             }
             .center-container {
-                margin-top: 10vh;
+                margin-top: 47vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -49,11 +49,6 @@ def html_landing():
     </head>
     <body>
         <div class="center-container">
-            <img 
-                src="https://github.com/user-attachments/assets/cd1f93f5-281e-4d28-b8a8-d4207b45a557" 
-                alt="Find Friend Logo" 
-                class="center-image"
-            >
             <button onclick="window.location.href='http://127.0.0.1:8000/login'">Войти через Google</button>
         </div>
     </body>
