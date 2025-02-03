@@ -26,16 +26,49 @@ def html_landing():
                 background-attachment: fixed;
             }
             .center-container {
-                margin-top: 47vh;
+                margin-top: 10vh; 
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 1px;
+                gap: 40px; 
             }
-            .center-image {
-                max-width: 300px;
-                max-height: 300px;
-                margin-bottom: 40px;
+            .glow-text {
+                font-size: 48px; 
+                font-weight: bold; 
+                color: #32CD32; 
+                text-shadow:
+                    0 0 10px #32CD32,
+                    0 0 20px #32CD32,
+                    0 0 30px rgba(50, 205, 50, 0.5);
+                letter-spacing: -1px;
+            }
+            .glow-text span {
+                display: inline-block;
+                animation: color-animation 0.5s infinite alternate, scale-animation 1s infinite alternate; 
+            }
+            @keyframes color-animation {
+                from {
+                    color: #32CD32; 
+                    text-shadow:
+                        0 0 10px #32CD32,
+                        0 0 20px #32CD32,
+                        0 0 30px rgba(50, 205, 50, 0.5);
+                }
+                to {
+                    color: #40E0D0; 
+                    text-shadow:
+                        0 0 10px #40E0D0,
+                        0 0 20px #40E0D0,
+                        0 0 30px rgba(64,224,208,0.5);
+                }
+            }
+            @keyframes scale-animation {
+                from {
+                    transform: translateY(0) scale(1);
+                }
+                to {
+                    transform: translateY(-10px) scale(1.2);
+                }
             }
             button {
                 background-color: black;
@@ -45,11 +78,25 @@ def html_landing():
                 cursor: pointer;
                 font-size: 18px;
                 font-weight: bold;
+                margin-top: 250px; 
             }
         </style>
     </head>
     <body>
         <div class="center-container">
+            <div class="glow-text">
+              <span style="animation-delay: 0s;">F</span>
+              <span style="animation-delay: 0.05s;">i</span>
+              <span style="animation-delay: 0.1s;">n</span>
+              <span style="animation-delay: 0.15s;">d</span>
+              <span style="animation-delay: 0.2s;"> </span>
+              <span style="animation-delay: 0.25s;">F</span>
+              <span style="animation-delay: 0.3s;">r</span>
+              <span style="animation-delay: 0.35s;">i</span>
+              <span style="animation-delay: 0.4s;">e</span>
+              <span style="animation-delay: 0.45s;">n</span>
+              <span style="animation-delay: 0.5s;">d</span>
+            </div>
             <button onclick="window.location.href='http://127.0.0.1:8000/login'">Войти через Google</button>
         </div>
     </body>
