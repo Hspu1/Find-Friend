@@ -1,6 +1,6 @@
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import ORJSONResponse
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
@@ -21,6 +21,22 @@ app = FastAPI(
     default_response_class=ORJSONResponse,
     title="Find Friend"
 )
+
+
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=os.getenv("SECRET_KEY")
+)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_headers=["*"],
+)
+
+
 app.include_router(homepage_router)
 app.include_router(google_auth_router)
 app.include_router(login_with_name_router)
@@ -30,19 +46,6 @@ app.include_router(submit_name_router)
 app.include_router(password_entering_router)
 app.include_router(submit_password_router)
 app.include_router(settings_router)
-
-
-app.add_middleware(
-    SessionMiddleware,
-    secret_key=os.getenv("SECRET_KEY")
-)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_headers=["*"],
-)
 
 
 if __name__ == '__main__':
