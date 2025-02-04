@@ -105,30 +105,3 @@ def html_landing():
         </body>
         </html>
     """
-
-
-@password_entering_router.post("/submit_password")
-async def submit_password(username: str = Form(...), password: str = Form(...)):
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-    new_user_data = AuthModel(username=username, hashed_psw=str(hashed_password))
-
-    print(
-        f"username: {username}, "
-        f"password: {password}, "
-        f"hashed_password: {hashed_password}"
-    )
-
-    try:
-        async with async_session_maker() as session:
-            async with session.begin():
-                session.add(new_user_data)
-
-                return {
-                    "msg": "Success"
-                }
-
-    except IntegrityError:
-        raise HTTPException(
-            status_code=409,
-            detail="Пользователь уже существует"
-        )
