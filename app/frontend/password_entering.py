@@ -82,7 +82,7 @@ def html_landing():
                                 headers: {{
                                     'Content-Type': 'application/x-www-form-urlencoded',
                                 }},
-                                body: 'username={new_username}&password=' + encodeURIComponent(password)
+                                body: 'username=' + encodeURIComponent('{new_username}') + '&password=' + encodeURIComponent(password)
                             }});
                             if (response.ok) {{
                                 alert('Данные успешно сохранены');
