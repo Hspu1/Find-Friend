@@ -86,7 +86,7 @@ def html_landing():
                             }});
                             if (response.ok) {{
                                 alert('Данные успешно сохранены');
-                                window.location.href = 'http://127.0.0.1:8000/settings';
+                                window.location.href = 'http://127.0.0.1:8000/questionnaire';
                             }} else {{
                                 const errorText = await response.text();
                                 console.error('Ошибка:', errorText);
