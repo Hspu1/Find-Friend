@@ -7,7 +7,6 @@ settings_router = APIRouter()
 
 @settings_router.get("/settings", response_class=HTMLResponse)
 def html_landing():
-    # без реализации, чисто для адреса
     return """
     <!DOCTYPE html>
     <html>
