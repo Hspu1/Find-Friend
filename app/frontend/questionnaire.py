@@ -11,7 +11,6 @@ def html_landing():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Анкета</title>
         <style>
             body {
                 margin: 0;
@@ -39,7 +38,6 @@ def html_landing():
             .black-card {
                 color: white;
                 background-color: black;
-                border: none;
             }
             #contact-me-container {
                 display: none;
