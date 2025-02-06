@@ -18,13 +18,16 @@ def html_landing():
                 padding: 0;
                 height: 100vh;
                 display: flex;
-                align-items: flex-start;
-                justify-content: center;
+                align-items: center; /* Центрирование по вертикали */
+                justify-content: center; /* Центрирование по горизонтали */
                 background-image: url('https://github.com/user-attachments/assets/9aec2db1-371c-4c3b-bc95-0bbc8dd1c8bd');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
                 background-attachment: fixed;
+            }
+            .container {
+                text-align: center; /* Центрирование содержимого */
             }
             .card {
                 padding: 20px 40px;
@@ -44,20 +47,22 @@ def html_landing():
         </style>
     </head>
     <body>
-        <div id="username">Имя - example_name</div>
-        <button class="card black-card" onclick="showAgeInput()">Возраст</button>
-        <input type="number" id="age-input" min="1" max="150" placeholder="Введите возраст" style="display:none;">
-        <button class="card black-card" onclick="showHobbiesInput()">Хобби</button>
-        <input type="text" id="hobbies-input" maxlength="50" placeholder="Введите хобби" style="display:none;">
-        <textarea id="bio-textarea" rows="5" cols="30" maxlength="100" placeholder="О себе"></textarea><br/>
-        <button class="card black-card" onclick="showContactMe()">Связаться со мной</button><br/>
-        <div id="contact-me-container">
-            <input type="text" id="telegram-input" placeholder="Телеграмм (до 50 символов)" maxlength="50"><br/><br/>
-            <input type="email" id="email-input" placeholder="Email (до 50 символов)" maxlength="50"><br/><br/>
-            <input type="tel" id="phone-input" placeholder="Телефон (до 30 символов)" maxlength="30"><br/><br/>
-            <input type="text" id="other-contact-info-input" placeholder="Другое (до 30 символов)" maxlength="30">
+        <div class="container">
+            <div id="username">Имя - example_name</div>
+            <button class="card black-card" onclick="showAgeInput()">Возраст</button>
+            <input type="number" id="age-input" min="1" max="150" placeholder="Введите возраст" style="display:none;" required>
+            <button class="card black-card" onclick="showHobbiesInput()">Хобби</button>
+            <input type="text" id="hobbies-input" maxlength="50" placeholder="Введите хобби" style="display:none;">
+            <textarea id="bio-textarea" rows="5" cols="30" maxlength="100" placeholder="О себе"></textarea><br/>
+            <button class="card black-card" onclick="showContactMe()">Связаться со мной</button><br/>
+            <div id="contact-me-container">
+                <input type="text" id="telegram-input" placeholder="Телеграмм (до 50 символов)" maxlength="50"><br/><br/>
+                <input type="email" id="email-input" placeholder="Email (до 50 символов)" maxlength="50"><br/><br/>
+                <input type="tel" id="phone-input" placeholder="Телефон (до 30 символов)" maxlength="30"><br/><br/>
+                <input type="text" id="other-contact-info-input" placeholder="Другое (до 30 символов)" maxlength="30">
+            </div>
+            <button class="card black-card" onclick="submitForm()">Готово!</button>
         </div>
-        <button class="card black-card" onclick="submitForm()">Готово!</button>
         <script>
             function showAgeInput() {
                 const ageInput = document.getElementById("age-input");
@@ -74,6 +79,12 @@ def html_landing():
             function submitForm() {
                 const username = document.getElementById("username").textContent.split(" - ")[1];
                 const age = document.getElementById("age-input").value || null;
+
+                if (!age) { // Проверка на обязательность возраста
+                    alert("Пожалуйста, укажите ваш возраст.");
+                    return;
+                }
+
                 const hobbies = document.getElementById("hobbies-input").value || null;
                 const bio = document.getElementById("bio-textarea").value || null;
                 const telegram = document.getElementById("telegram-input").value || null;
