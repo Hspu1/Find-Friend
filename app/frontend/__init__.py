@@ -14,4 +14,4 @@ from .auth_denied import auth_denied_router
 from .change_name import change_name_router
 from .submit_name import submit_name_router
 from .password_entering import password_entering_router
-from .settings import settings_router
+from .questionnaire import settings_router

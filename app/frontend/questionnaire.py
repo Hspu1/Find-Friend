@@ -2,10 +2,10 @@ from fastapi import APIRouter
 from starlette.responses import HTMLResponse
 
 
-settings_router = APIRouter()
+questionnaire_router = APIRouter()
 
 
-@settings_router.get("/settings", response_class=HTMLResponse)
+@questionnaire_router.get("/questionnaire", response_class=HTMLResponse)
 def html_landing():
     return """
     <!DOCTYPE html>
