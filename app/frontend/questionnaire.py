@@ -18,8 +18,8 @@ def html_landing():
                 padding: 0;
                 height: 100vh;
                 display: flex;
-                align-items: center; /* Центрирование по вертикали */
-                justify-content: center; /* Центрирование по горизонтали */
+                align-items: center;
+                justify-content: center;
                 background-image: url('https://github.com/user-attachments/assets/9aec2db1-371c-4c3b-bc95-0bbc8dd1c8bd');
                 background-size: cover;
                 background-repeat: no-repeat;
@@ -27,7 +27,7 @@ def html_landing():
                 background-attachment: fixed;
             }
             .container {
-                text-align: center; /* Центрирование содержимого */
+                text-align: center;
             }
             .card {
                 padding: 20px 40px;
