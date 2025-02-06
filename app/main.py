@@ -12,7 +12,7 @@ from app.backend import (
 from app.frontend import (
     homepage_router, login_with_name_router, auth_denied_router,
     change_name_router, submit_name_router, password_entering_router,
-    settings_router
+    questionnaire_router
 )
 from app.google_auth import google_auth_router
 
@@ -45,7 +45,7 @@ app.include_router(change_name_router)
 app.include_router(submit_name_router)
 app.include_router(password_entering_router)
 app.include_router(submit_password_router)
-app.include_router(settings_router)
+app.include_router(questionnaire_router)
 
 
 if __name__ == '__main__':
