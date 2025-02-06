@@ -111,6 +111,7 @@ def html_landing():
 @questionnaire_router.post(path="/save_data", status_code=201)
 async def save_data(request: Request):
     form_data = await request.json()
+
     print({
         "Имя": form_data["username"],
         "Возраст": form_data["age"],
@@ -121,4 +122,5 @@ async def save_data(request: Request):
         "Телефон": form_data["phone"],
         "Другое": form_data["otherContactInfo"]
     })
+
     return {"message": f"{form_data['username']}'s data saved successfully"}
