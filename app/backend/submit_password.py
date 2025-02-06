@@ -8,7 +8,7 @@ from app.core import async_session_maker, AuthModel
 submit_password_router = APIRouter()
 
 
-@submit_password_router.post("/submit_password")
+@submit_password_router.post(path="/submit_password", status_code=201)
 async def submit_password(username: str = Form(...), password: str = Form(...)):
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     new_user_data = AuthModel(username=username, hashed_psw=str(hashed_password))
