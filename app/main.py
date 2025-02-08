@@ -7,7 +7,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from uvicorn import run
 
 from app.backend import (
-    submit_password_router
+    submit_password_router, save_data_router
 )
 from app.frontend import (
     homepage_router, login_with_name_router, auth_denied_router,

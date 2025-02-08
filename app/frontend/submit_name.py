@@ -7,7 +7,7 @@ submit_name_router = APIRouter()
 fake_new_submit_names_db = []
 
 
-@submit_name_router.post("/submit_name", response_class=HTMLResponse)
+@submit_name_router.post("/submit_name", response_class=HTMLResponse, status_code=201)
 def submit_name(new_name: str = Form()):
     fake_new_submit_names_db.append(new_name)
     fake_new_names_db.append(new_name)
