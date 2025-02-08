@@ -46,6 +46,7 @@ app.include_router(submit_name_router)
 app.include_router(password_entering_router)
 app.include_router(submit_password_router)
 app.include_router(questionnaire_router)
+app.include_router(save_data_router)
 
 
 if __name__ == '__main__':
