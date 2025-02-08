@@ -57,7 +57,7 @@ def html_landing():
                 <input type="text" id="telegram-input" placeholder="Телеграмм (до 50 символов)" maxlength="50"><br/><br/>
                 <input type="email" id="email-input" placeholder="Email (до 50 символов)" maxlength="50"><br/><br/>
                 <input type="tel" id="phone-input" placeholder="Телефон (до 30 символов)" maxlength="30"><br/><br/>
-                <input type="text" id="other-contact-info-input" placeholder="Другое (до 30 символов)" maxlength="30">
+                <input type="text" id="other-contact-info-input" placeholder="Другое (до 30 символов)" maxlength="100">
             </div>
             <button class="card black-card" onclick="submitForm()">Готово!</button>
         </div>

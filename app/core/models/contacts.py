@@ -13,4 +13,4 @@ class ContactsModel(Base):
     telegram = Column(type_=String(50), nullable=True, unique=True, index=True)
     email = Column(type_=String(50), nullable=True, unique=True)
     phone = Column(type_=String(30), nullable=True, unique=True)
-    other = Column(type_=String(30), nullable=True, unique=True)
+    other = Column(type_=String(100), nullable=True, unique=True)
