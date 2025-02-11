@@ -86,19 +86,15 @@ def html_landing():
                     <button class='card' onclick='showContactMe()'>Связаться со мной</button><br/>
 
                     <div id='contact-me-container' style='display:none;'>
-                        Введите username в Telegram (до 50 символов):<br/>
                         <input type='text' id='telegram-input' placeholder='Телеграмм' maxlength='50'><br/>
                         <hr/>
 
-                        Введите Email (до 50 символов):<br/>
                         <input type='email' id='email-input' placeholder='Email' maxlength='50'><br/>
                         <hr/>
 
-                        Введите номер телефона (до 30 символов):<br/>
                         <input type='tel' id='phone-input' placeholder='Телефон' maxlength='30'><br/>
                         <hr/>
 
-                        Другое (до 100 символов):<br/>
                         <input type='text' id='other-contact-info-input' placeholder='Другое' maxlength='100'><br/>
                         <hr/>
                     </div>
