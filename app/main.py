@@ -7,7 +7,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from uvicorn import run
 
 from app.backend import (
-    submit_password_router, save_data_router
+    submit_password_router, save_data_router, get_latest_username_router
 )
 from app.frontend import (
     homepage_router, login_with_name_router, auth_denied_router,
@@ -35,8 +35,12 @@ app.add_middleware(
     allow_credentials=True,
     allow_headers=["*"],
 )
+# Backend
+app.include_router(submit_password_router)
+app.include_router(save_data_router)
+app.include_router(get_latest_username_router)
 
-
+# Frontend
 app.include_router(homepage_router)
 app.include_router(google_auth_router)
 app.include_router(login_with_name_router)
@@ -44,9 +48,7 @@ app.include_router(auth_denied_router)
 app.include_router(change_name_router)
 app.include_router(submit_name_router)
 app.include_router(password_entering_router)
-app.include_router(submit_password_router)
 app.include_router(questionnaire_router)
-app.include_router(save_data_router)
 
 
 if __name__ == '__main__':

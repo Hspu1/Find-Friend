@@ -77,7 +77,7 @@ def html_landing():
 
             <body>
                 <div class='container'>
-                    <div id='username'>Имя - example_name_blyat</div><br/>
+                    <div id='username'>Имя - example_balbes</div><br/>
 
                     <button class='card' onclick='showInput("age")'>Возраст</button><br/>
                     <input type='number' id='age-input' min='1' max='150' placeholder='Введите возраст' style='display:none;' required><br/>
