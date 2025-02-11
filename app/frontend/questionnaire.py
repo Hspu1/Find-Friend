@@ -66,6 +66,11 @@ def html_landing():
 
                    }
 
+                   /* Added margin to separate "Contact Me" and "Done" buttons */
+                   #done-button {
+                       margin-top: 20px;
+                   }
+
                 </style>
 
             </head>
@@ -99,7 +104,7 @@ def html_landing():
                         <hr/>
                     </div>
 
-                    <button class='card' onclick='submitForm()'>Готово!</button>
+                    <button class='card' id='done-button' onclick='submitForm()'>Готово!</button>
                 </div>
 
                 <script>
@@ -117,8 +122,9 @@ def html_landing():
 
                     function submitForm() {
                         const username = document.getElementById("username").textContent.split("-")[1];
-                        const nameValue = document.getElementById("name-input").value || null;
-                        const age = document.getElementById("age-input").value || null;
+                        const nameValue = document.getElementById("name-input") ? (document.getElementById("name-input").value || null) : null;
+                        const ageInput = document.getElementById("age-input");
+                        const age = ageInput ? (ageInput.value || null) : null;
                         const hobbies = document.getElementById("hobbies-input").value || null;
                         const bio = document.getElementById("bio-textarea").value || null;
 
@@ -126,6 +132,12 @@ def html_landing():
                         const email = document.getElementById("email-input").value || null;
                         const phone = document.getElementById("phone-input").value || null;
                         const otherContactInfo = document.getElementById("other-contact-info-input").value || null;
+
+                        // Check if age is valid
+                        if (ageInput && !ageInput.checkValidity()) {
+                            alert("Пожалуйста, введите корректный возраст (от 1 до 150)");
+                            return;
+                        }
 
                         const data = {
                             username: username,
