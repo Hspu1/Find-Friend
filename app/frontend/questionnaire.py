@@ -1,12 +1,13 @@
 from fastapi import APIRouter
 from starlette.responses import HTMLResponse
 
+from app.backend.get_last_username import get_latest_username
 
 questionnaire_router = APIRouter()
 
 
 @questionnaire_router.get("/questionnaire", response_class=HTMLResponse)
-def html_landing():
+async def html_landing():
     html_content = f"""
         <!DOCTYPE html>
         <html>
@@ -77,7 +78,7 @@ def html_landing():
 
             <body>
                 <div class='container'>
-                    <div id='username'>Имя - example_balbes</div><br/>
+                    <div id='username'>Имя - {await get_latest_username()}</div><br/>
 
                     <button class='card' onclick='showInput("age")'>Возраст</button><br/>
                     <input type='number' id='age-input' min='1' max='150' placeholder='Введите возраст' style='display:none;' required><br/>
