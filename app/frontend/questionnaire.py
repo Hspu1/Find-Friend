@@ -11,7 +11,6 @@ def html_landing():
         <!DOCTYPE html>
         <html>
             <head>
-                <!-- стили CSS -->
                 <style>
                     body {
                         margin: 0;
@@ -42,7 +41,7 @@ def html_landing():
                         background-color:black ;
                         color:white ;
                         border:none ;
-                        cursor: pointer; /* Добавлен курсор */
+                        cursor: pointer;
 					}
 
 					input[type="number"], input[type="text"], textarea, input[type="email"], input[type="tel"]{
@@ -73,31 +72,21 @@ def html_landing():
 
             <body>
                 <div class='container'>
-                    <!-- Имя пользователя -->
                     <div id='username'>Имя - example_name</div><br/>
 
-                    <!-- Кнопка для ввода имени -->
-                    <button class='card' onclick='showInput("name")'>Введите имя</button><br/>
-                    <input type='text' id='name-input' placeholder='Введите имя' style='display:none;' required><br/>
-
-                    <!-- Кнопка для ввода возраста -->
                     <button class='card' onclick='showInput("age")'>Возраст</button><br/>
                     <input type='number' id='age-input' min='1' max='150' placeholder='Введите возраст' style='display:none;' required><br/>
 
-                    <!-- Кнопка для ввода хобби -->
                     <button class='card' onclick='showInput("hobbies")'>Хобби</button><br/>
                     <input type='text' id='hobbies-input' placeholder='Введите хобби' style='display:none;'><br/>
 
-                    <!-- Кнопка для ввода биографии -->
                     <button class='card' onclick='showInput("bio")'>О себе</button><br/>
                     <textarea id='bio-textarea' rows='5' cols='30' maxlength='100' placeholder='О себе' style='display:none;'></textarea><br/>
 
-                    <!-- Кнопка для ввода контактной информации -->
                     <button class='card' onclick='showContactMe()'>Связаться со мной</button><br/>
 
-                    <!-- Блок контактной информации -->
                     <div id='contact-me-container' style='display:none;'>
-                        Введите Telegram (до 50 символов):<br/>
+                        Введите username в Telegram (до 50 символов):<br/>
                         <input type='text' id='telegram-input' placeholder='Телеграмм' maxlength='50'><br/>
                         <hr/>
 
@@ -114,7 +103,6 @@ def html_landing():
                         <hr/>
                     </div>
 
-                    <!-- кнопка отправки формы -->
                     <button class='card' onclick='submitForm()'>Готово!</button>
                 </div>
 
@@ -138,7 +126,6 @@ def html_landing():
                         const hobbies = document.getElementById("hobbies-input").value || null;
                         const bio = document.getElementById("bio-textarea").value || null;
 
-                        // Контактные данные
                         const telegram = document.getElementById("telegram-input").value || null;
                         const email = document.getElementById("email-input").value || null;
                         const phone = document.getElementById("phone-input").value || null;
