@@ -1,9 +1,6 @@
-from fastapi import APIRouter, Form, HTTPException
-from sqlalchemy.exc import IntegrityError
+from fastapi import APIRouter
 from starlette.responses import HTMLResponse
-import bcrypt
 
-from app.core import async_session_maker, AuthModel
 from app.frontend.login_with_name import fake_new_names_db
 from app.frontend.submit_name import fake_new_submit_names_db
 
@@ -17,7 +14,7 @@ def html_landing():
     except IndexError:
         new_username = fake_new_submit_names_db[-1]
 
-    return f"""
+    html_content = f"""
         <!DOCTYPE html>
         <html>
         <head>
@@ -105,3 +102,5 @@ def html_landing():
         </body>
         </html>
     """
+
+    return html_content

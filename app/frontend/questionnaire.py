@@ -7,12 +7,12 @@ questionnaire_router = APIRouter()
 
 @questionnaire_router.get("/questionnaire", response_class=HTMLResponse)
 def html_landing():
-    html_content = """
+    html_content = f"""
         <!DOCTYPE html>
         <html>
             <head>
                 <style>
-                    body {
+                    body {{
                         margin: 0;
                         padding: 0;
                         height: 100vh;
@@ -24,13 +24,13 @@ def html_landing():
                         background-repeat: no-repeat;
                         background-position: center;
                         background-attachment: fixed;
-                    }
+                    }}
 
-                    .container {
+                    .container {{
                        text-align:center;
-                    }
+                    }}
 
-                    .card {
+                    .card {{
                        padding-top :10px;
                        padding-bottom :10px;
                        padding-left :40px;
@@ -42,9 +42,9 @@ def html_landing():
                         color:white ;
                         border:none ;
                         cursor: pointer;
-					}
+					}}
 
-					input[type="number"], input[type="text"], textarea, input[type="email"], input[type="tel"]{
+					input[type="number"], input[type="text"], textarea, input[type="email"], input[type="tel"]{{
 						width :300px ;
 						height :30px ;
 						font-size :16px ;
@@ -52,24 +52,24 @@ def html_landing():
 						border:none ;
     					border-bottom:solid black 2px;
 
-					}
+					}}
 
-    				textarea{
+    				textarea{{
     					    resize:none ;
     						border:none ;
     						border-bottom:solid black 2px;
 
-    				}
+    				}}
 
-                    #contact-me-container {
+                    #contact-me-container {{
                       display:none ;
 
-                   }
+                   }}
 
                    /* Added margin to separate "Contact Me" and "Done" buttons */
-                   #done-button {
+                   #done-button {{
                        margin-top: 20px;
-                   }
+                   }}
 
                 </style>
 
@@ -77,7 +77,7 @@ def html_landing():
 
             <body>
                 <div class='container'>
-                    <div id='username'>Имя - example_name</div><br/>
+                    <div id='username'>Имя - example_name_blyat</div><br/>
 
                     <button class='card' onclick='showInput("age")'>Возраст</button><br/>
                     <input type='number' id='age-input' min='1' max='150' placeholder='Введите возраст' style='display:none;' required><br/>
@@ -108,19 +108,19 @@ def html_landing():
                 </div>
 
                 <script>
-                    function showInput(inputId) {
+                    function showInput(inputId) {{
                         const input = document.getElementById(inputId + "-input") || document.getElementById(inputId + "-textarea");
-                        if (input) {
+                        if (input) {{
                             input.style.display = (input.style.display === 'none') ? 'block' : 'none';
-                        }
-                    }
+                        }}
+                    }}
 
-                    function showContactMe() {
+                    function showContactMe() {{
                         const contactContainer = document.getElementById("contact-me-container");
                         contactContainer.style.display = (contactContainer.style.display === "none") ? "block" : "none";
-                    }
+                    }}
 
-                    function submitForm() {
+                    function submitForm() {{
                         const username = document.getElementById("username").textContent.split("-")[1];
                         const nameValue = document.getElementById("name-input") ? (document.getElementById("name-input").value || null) : null;
                         const ageInput = document.getElementById("age-input");
@@ -134,12 +134,12 @@ def html_landing():
                         const otherContactInfo = document.getElementById("other-contact-info-input").value || null;
 
                         // Check if age is valid
-                        if (ageInput && !ageInput.checkValidity()) {
+                        if (ageInput && !ageInput.checkValidity()) {{
                             alert("Пожалуйста, введите корректный возраст (от 1 до 150)");
                             return;
-                        }
+                        }}
 
-                        const data = {
+                        const data = {{
                             username: username,
                             name: nameValue,
                             age: age,
@@ -149,24 +149,24 @@ def html_landing():
                             email: email,
                             phone: phone,
                             otherContactInfo: otherContactInfo
-                        };
+                        }};
 
-                        fetch("http://127.0.0.1:8000/save_data", {
+                        fetch("http://127.0.0.1:8000/save_data", {{
                             method: "POST",
-                            headers: {
+                            headers: {{
                                 "Content-Type": "application/json"
-                            },
+                            }},
                             body: JSON.stringify(data)
-                        })
-                        .then(response => {
-                            if (response.ok) {
+                        }})
+                        .then(response => {{
+                            if (response.ok) {{
                                 window.location.href = "http://127.0.0.1:8000";
-                            } else {
+                            }} else {{
                                 alert("Ошибка при отправке данных");
-                            }
-                        })
+                            }}
+                        }})
                         .catch(error => console.error("Ошибка:", error));
-                    }
+                    }}
                 </script>
             </body>
         </html>
