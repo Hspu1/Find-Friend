@@ -8,7 +8,7 @@ questionnaire_router = APIRouter()
 
 @questionnaire_router.get("/questionnaire", response_class=HTMLResponse)
 async def html_landing():
-    username = await get_latest_username()
+    username = await get_latest_username()  # Получаем имя пользователя
     html_content = f"""
         <!DOCTYPE html>
         <html>
@@ -19,19 +19,20 @@ async def html_landing():
                         padding: 0;
                         height: 100vh;
                         display: flex;
+                        flex-direction: column;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: flex-start; /* Выравнивание сверху */
                         background-image: url('https://github.com/user-attachments/assets/9aec2db1-371c-4c3b-bc95-0bbc8dd1c8bd');
                         background-size: cover;
                         background-repeat: no-repeat;
                         background-position: center;
                         background-attachment: fixed;
                     }}
-
                     .container {{
-                       text-align:center;
+                       text-align: center;
+                       width: 100%;
+                       margin-top: 100px; /* Смещение текста вниз на 100 пикселей */
                     }}
-
                     h1 {{
                         color: white;
                         font-weight: bold;
@@ -39,148 +40,143 @@ async def html_landing():
                                      1px -1px 0 black, -1px 1px 0 black, 
                                      1px 1px 0 black;
                     }}
-
+                    .button-group {{
+                       margin-top: 270px; /* Смещаем группу кнопок ниже на дополнительные 20 пикселей */
+                       display: flex;
+                       flex-direction: column; /* Располагаем кнопки вертикально */
+                       align-items: center; /* Центрируем кнопки */
+                    }}
                     .card {{
-                       padding-top :10px;
-                       padding-bottom :10px;
-                       padding-left :40px;
-                       padding-right :40px;
-
-                        font-size :18px ;
-                        font-weight :bold ;
-                        background-color:black ;
-                        color:white ;
-                        border:none ;
-                        cursor: pointer;
-					}}
-
-					input[type="number"], input[type="text"], textarea, input[type="email"], input[type="tel"]{{
-						width :300px ;
-						height :30px ;
-						font-size :16px ;
-						margin-bottom :20px ;
-						border:none ;
-    					border-bottom:solid black 2px;
-
-					}}
-
-    				textarea{{
-    					    resize:none ;
-    						border:none ;
-    						border-bottom:solid black 2px;
-
-    				}}
-
+                       padding: 10px 40px;
+                       font-size: 18px;
+                       font-weight: bold;
+                       background-color: black;
+                       color: white;
+                       border: none;
+                       cursor: pointer;
+                       margin-top: 5px; /* Уменьшенный отступ между кнопками */
+                    }}
+                    .input-field {{
+                        display: none; /* Поля скрыты по умолчанию */
+                        margin-top: 10px; /* Отступ сверху для полей ввода */
+                    }}
+                    input, textarea {{
+                        width: 300px;
+                        height: 30px;
+                        font-size: 16px;
+                        margin-bottom: 10px; /* Уменьшенный отступ между полями */
+                        border: none;
+                        border-bottom: solid black 2px;
+                    }}
+                    textarea {{
+                        resize: none;
+                    }}
                     #contact-me-container {{
                       display:none ;
-                      margin-top: 20px; /* Отступ между кнопкой и полем Telegram */
+                      margin-top: 10px; /* Уменьшенный отступ сверху для контейнера */
                    }}
-
-                   /* Added margin to separate "Contact Me" and "Done" buttons */
                    #done-button {{
-                       margin-top: 20px;
+                       margin-top: 20px; /* Отступ сверху для кнопки "Готово" */
+                       padding: 15px 30px; /* Увеличение размера кнопки */
+                       font-size: 20px; /* Увеличение шрифта для кнопки "Готово" */
                    }}
-
                 </style>
-
             </head>
-
             <body>
                 <div class='container'>
-                    <h1>Имя - {username}</h1><br/> <!-- Изменён стиль текста имени пользователя -->
+                    <h1>Имя - {username}</h1> <!-- Имя пользователя -->
 
-                    <button class='card' onclick='showInput("age")'>Возраст</button><br/>
-                    <input type='number' id='age-input' min='1' max='150' placeholder='Введите возраст' style='display:none;' required><br/>
+                    <div class="button-group">
+                        <button class='card' onclick='showInput("age")'>Возраст</button>
+                        <input type='number' id='age-input' class='input-field' min='1' max='150' required>
 
-                    <button class='card' onclick='showInput("hobbies")'>Хобби</button><br/>
-                    <input type='text' id='hobbies-input' placeholder='Введите хобби' style='display:none;'><br/>
+                        <button class='card' onclick='showInput("hobbies")'>Хобби</button>
+                        <input type='text' id='hobbies-input' class='input-field'>
 
-                    <button class='card' onclick='showInput("bio")'>О себе</button><br/>
-                    <textarea id='bio-textarea' rows='5' cols='30' maxlength='100' placeholder='О себе' style='display:none;'></textarea><br/>
+                        <button class='card' onclick='showInput("bio")'>О себе</button>
+                        <textarea id='bio-textarea' class='input-field' rows='5' cols='30' maxlength='100'></textarea>
 
-                    <button class='card' onclick='showContactMe()'>Связаться со мной</button><br/>
+                        <button class='card' onclick='showContactMe()'>Связаться со мной</button>
 
-                    <div id='contact-me-container'>
-                        <!-- Поле Telegram с отступом -->
-                        <input type='text' id='telegram-input' placeholder='Телеграмм' maxlength='50'><br/>
+                        <div id='contact-me-container'>
+                            <input type='text' id='telegram-input' placeholder='Телеграмм' maxlength='50'><br/>
+                            <input type='email' id='email-input' placeholder='Email' maxlength='50'><br/>
+                            <input type='tel' id='phone-input' placeholder='Телефон' maxlength='30'><br/>
+                            <input type='text' id='other-contact-info-input' placeholder='Другое' maxlength='100'><br/>
+                        </div>
 
-                        <!-- Другие поля с разделителями -->
-                        <hr/>
-                        <input type='email' id='email-input' placeholder='Email' maxlength='50'><br/>
-
-                        <hr/>
-                        <input type='tel' id='phone-input' placeholder='Телефон' maxlength='30'><br/>
-
-                        <!-- Убрана последняя разделяющая черта -->
-                        <input type='text' id='other-contact-info-input' placeholder='Другое' maxlength='100'><br/>
+                        <button class='card' id='done-button' onclick='submitForm()'>Готово!</button>
                     </div>
-
-                    <button class='card' id='done-button' onclick='submitForm()'>Готово!</button>
                 </div>
 
                 <script>
                     function showInput(inputId) {{
                         const input = document.getElementById(inputId + "-input") || document.getElementById(inputId + "-textarea");
+
+                        // Переключаем отображение поля
                         if (input) {{
-                            input.style.display = (input.style.display === 'none') ? 'block' : 'none';
+                            // Если поле уже открыто, скрываем его
+                            if (input.style.display === 'block') {{
+                                input.style.display = 'none';
+                            }} else {{
+                                // Скрываем все другие поля ввода перед показом нового
+                                const allInputs = document.querySelectorAll('.input-field');
+                                allInputs.forEach(field => field.style.display = 'none');
+
+                                // Показываем текущее поле
+                                input.style.display = 'block';
+                                input.focus(); // Фокус на поле ввода после его отображения
+                            }}
                         }}
                     }}
 
                     function showContactMe() {{
                         const contactContainer = document.getElementById("contact-me-container");
+
+                        // Переключаем отображение контейнера
                         contactContainer.style.display = (contactContainer.style.display === "none") ? "block" : "none";
                     }}
 
                     function submitForm() {{
-                        const username = document.getElementById("username").textContent.split("-")[1];
-                        const nameValue = document.getElementById("name-input") ? (document.getElementById("name-input").value || null) : null;
                         const ageInput = document.getElementById("age-input");
-                        const age = ageInput ? (ageInput.value || null) : null;
-                        const hobbies = document.getElementById("hobbies-input").value || null;
-                        const bio = document.getElementById("bio-textarea").value || null;
 
-                        const telegram = document.getElementById("telegram-input").value || null;
-                        const email = document.getElementById("email-input").value || null;
-                        const phone = document.getElementById("phone-input").value || null;
-                        const otherContactInfo = document.getElementById("other-contact-info-input").value || null;
-
-                        // Check if age is valid
-                        if (ageInput && !ageInput.checkValidity()) {{
-                            alert("Пожалуйста, введите корректный возраст (от 1 до 150)");
+                        // Проверяем, заполнено ли поле возраста
+                        if (!ageInput.value) {{
+                            alert("Вы не заполнили обязательное поле для ввода возраста");
                             return;
                         }}
 
                         const data = {{
-                            username: username,
-                            name: nameValue,
-                            age: age,
-                            hobbies: hobbies,
-                            bio: bio,
-                            telegram: telegram,
-                            email: email,
-                            phone: phone,
-                            otherContactInfo: otherContactInfo
+                            username: "{username}",
+                            age: ageInput.value,
+                            hobbies: document.getElementById("hobbies-input").value || null,
+                            bio: document.getElementById("bio-textarea").value || null,
+                            telegram: document.getElementById("telegram-input").value || null,
+                            email: document.getElementById("email-input").value || null,
+                            phone: document.getElementById("phone-input").value || null,
+                            otherContactInfo: document.getElementById("other-contact-info-input").value || null
                         }};
 
                         fetch("http://127.0.0.1:8000/save_data", {{
                             method: "POST",
-                            headers: {{
-                                "Content-Type": "application/json"
-                            }},
+                            headers: {{ "Content-Type": "application/json" }},
                             body: JSON.stringify(data)
                         }})
                         .then(response => {{
                             if (response.ok) {{
                                 window.location.href = "http://127.0.0.1:8000";
                             }} else {{
-                                alert("Ошибка при отправке данных");
+                                return response.text().then(text => {{ throw new Error(text); }});
                             }}
                         }})
-                        .catch(error => console.error("Ошибка:", error));
+                        .catch(error => {{
+                            console.error("Ошибка:", error);
+                            alert("Ошибка при отправке данных: " + error.message);
+                        }});
                     }}
                 </script>
             </body>
         </html>
-        """
+    """
 
     return html_content
