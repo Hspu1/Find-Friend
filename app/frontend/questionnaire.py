@@ -8,6 +8,7 @@ questionnaire_router = APIRouter()
 
 @questionnaire_router.get("/questionnaire", response_class=HTMLResponse)
 async def html_landing():
+    username = await get_latest_username()
     html_content = f"""
         <!DOCTYPE html>
         <html>
@@ -29,6 +30,14 @@ async def html_landing():
 
                     .container {{
                        text-align:center;
+                    }}
+
+                    h1 {{
+                        color: white;
+                        font-weight: bold;
+                        text-shadow: 2px 2px 0 black, -1px -1px 0 black, 
+                                     1px -1px 0 black, -1px 1px 0 black, 
+                                     1px 1px 0 black;
                     }}
 
                     .card {{
@@ -64,7 +73,7 @@ async def html_landing():
 
                     #contact-me-container {{
                       display:none ;
-
+                      margin-top: 20px; /* Отступ между кнопкой и полем Telegram */
                    }}
 
                    /* Added margin to separate "Contact Me" and "Done" buttons */
@@ -78,7 +87,7 @@ async def html_landing():
 
             <body>
                 <div class='container'>
-                    <div id='username'>Имя - {await get_latest_username()}</div><br/>
+                    <h1>Имя - {username}</h1><br/> <!-- Изменён стиль текста имени пользователя -->
 
                     <button class='card' onclick='showInput("age")'>Возраст</button><br/>
                     <input type='number' id='age-input' min='1' max='150' placeholder='Введите возраст' style='display:none;' required><br/>
@@ -91,18 +100,19 @@ async def html_landing():
 
                     <button class='card' onclick='showContactMe()'>Связаться со мной</button><br/>
 
-                    <div id='contact-me-container' style='display:none;'>
+                    <div id='contact-me-container'>
+                        <!-- Поле Telegram с отступом -->
                         <input type='text' id='telegram-input' placeholder='Телеграмм' maxlength='50'><br/>
-                        <hr/>
 
+                        <!-- Другие поля с разделителями -->
+                        <hr/>
                         <input type='email' id='email-input' placeholder='Email' maxlength='50'><br/>
-                        <hr/>
 
+                        <hr/>
                         <input type='tel' id='phone-input' placeholder='Телефон' maxlength='30'><br/>
-                        <hr/>
 
+                        <!-- Убрана последняя разделяющая черта -->
                         <input type='text' id='other-contact-info-input' placeholder='Другое' maxlength='100'><br/>
-                        <hr/>
                     </div>
 
                     <button class='card' id='done-button' onclick='submitForm()'>Готово!</button>
