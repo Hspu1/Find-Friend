@@ -63,9 +63,8 @@ def html_landing():
             <div class="container">
                 <div class="input-button-container">
                     <input type="password" id="password" placeholder="Пароль" minlength="5" maxlength="12" required>
-                    <button onclick="submitPassword()">Войти (на самом деле зарегестрироваться)</button>
+                    <button onclick="submitPassword()">Зарегестрироваться</button>
                 </div>
-                <button onclick="window.location.href='http://127.0.0.1:8000/'">Придумать пароль</button>
                 <button onclick="window.location.href='http://127.0.0.1:8000/login_with_name'">Назад</button>
             </div>
 
