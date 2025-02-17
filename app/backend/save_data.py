@@ -7,7 +7,9 @@ save_data_router = APIRouter()
 async def save_data(request: Request):
     form_data = await request.json()
 
-    print({
+    print(
+        "Файл с кодом - save_data.py",
+        {
         "Имя": form_data["username"],
         "Возраст": form_data["age"],
         "Хобби": form_data["hobbies"],
@@ -16,6 +18,7 @@ async def save_data(request: Request):
         "Email": form_data["email"],
         "Телефон": form_data["phone"],
         "Другое": form_data["otherContactInfo"]
-    })
+        }
+    )
 
     return {"message": f"{form_data['username']}'s data saved successfully"}
