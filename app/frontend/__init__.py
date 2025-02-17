@@ -5,7 +5,8 @@ __all__ = (
     "change_name_router",
     "submit_name_router",
     "password_entering_router",
-    "questionnaire_router"
+    "questionnaire_router",
+    "settings_page_router"
 )
 
 from .homepage import homepage_router
@@ -15,3 +16,4 @@ from .change_name import change_name_router
 from .submit_name import submit_name_router
 from .password_entering import password_entering_router
 from .questionnaire import questionnaire_router
+from .settings_page import settings_page_router

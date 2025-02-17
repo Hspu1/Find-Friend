@@ -8,7 +8,8 @@ questionnaire_router = APIRouter()
 
 @questionnaire_router.get("/questionnaire", response_class=HTMLResponse)
 async def html_landing():
-    username = await get_latest_username()  # Получаем имя пользователя
+    username = await get_latest_username()
+
     html_content = f"""
         <!DOCTYPE html>
         <html>
@@ -21,7 +22,7 @@ async def html_landing():
                         display: flex;
                         flex-direction: column;
                         align-items: center;
-                        justify-content: flex-start; /* Выравнивание сверху */
+                        justify-content: flex-start;
                         background-image: url('https://github.com/user-attachments/assets/9aec2db1-371c-4c3b-bc95-0bbc8dd1c8bd');
                         background-size: cover;
                         background-repeat: no-repeat;
@@ -31,7 +32,7 @@ async def html_landing():
                     .container {{
                        text-align: center;
                        width: 100%;
-                       margin-top: 100px; /* Смещение текста вниз на 100 пикселей */
+                       margin-top: 100px;
                     }}
                     h1 {{
                         color: white;
@@ -41,10 +42,10 @@ async def html_landing():
                                      1px 1px 0 black;
                     }}
                     .button-group {{
-                       margin-top: 270px; /* Смещаем группу кнопок ниже на дополнительные 20 пикселей */
+                       margin-top: 270px;
                        display: flex;
-                       flex-direction: column; /* Располагаем кнопки вертикально */
-                       align-items: center; /* Центрируем кнопки */
+                       flex-direction: column;
+                       align-items: center;
                     }}
                     .card {{
                        padding: 10px 40px;
@@ -54,17 +55,17 @@ async def html_landing():
                        color: white;
                        border: none;
                        cursor: pointer;
-                       margin-top: 5px; /* Уменьшенный отступ между кнопками */
+                       margin-top: 5px;
                     }}
                     .input-field {{
-                        display: none; /* Поля скрыты по умолчанию */
-                        margin-top: 10px; /* Отступ сверху для полей ввода */
+                        display: none;
+                        margin-top: 10px;
                     }}
                     input, textarea {{
                         width: 300px;
                         height: 30px;
                         font-size: 16px;
-                        margin-bottom: 10px; /* Уменьшенный отступ между полями */
+                        margin-bottom: 10px;
                         border: none;
                         border-bottom: solid black 2px;
                     }}
@@ -73,12 +74,12 @@ async def html_landing():
                     }}
                     #contact-me-container {{
                       display:none ;
-                      margin-top: 10px; /* Уменьшенный отступ сверху для контейнера */
+                      margin-top: 10px;
                    }}
                    #done-button {{
-                       margin-top: 20px; /* Отступ сверху для кнопки "Готово" */
-                       padding: 15px 30px; /* Увеличение размера кнопки */
-                       font-size: 20px; /* Увеличение шрифта для кнопки "Готово" */
+                       margin-top: 20px;
+                       padding: 15px 30px;
+                       font-size: 20px;
                    }}
                 </style>
             </head>
@@ -113,19 +114,15 @@ async def html_landing():
                     function showInput(inputId) {{
                         const input = document.getElementById(inputId + "-input") || document.getElementById(inputId + "-textarea");
 
-                        // Переключаем отображение поля
                         if (input) {{
-                            // Если поле уже открыто, скрываем его
                             if (input.style.display === 'block') {{
                                 input.style.display = 'none';
                             }} else {{
-                                // Скрываем все другие поля ввода перед показом нового
                                 const allInputs = document.querySelectorAll('.input-field');
                                 allInputs.forEach(field => field.style.display = 'none');
 
-                                // Показываем текущее поле
                                 input.style.display = 'block';
-                                input.focus(); // Фокус на поле ввода после его отображения
+                                input.focus();
                             }}
                         }}
                     }}
@@ -133,14 +130,12 @@ async def html_landing():
                     function showContactMe() {{
                         const contactContainer = document.getElementById("contact-me-container");
 
-                        // Переключаем отображение контейнера
                         contactContainer.style.display = (contactContainer.style.display === "none") ? "block" : "none";
                     }}
 
                     function submitForm() {{
                         const ageInput = document.getElementById("age-input");
 
-                        // Проверяем, заполнено ли поле возраста
                         if (!ageInput.value) {{
                             alert("Вы не заполнили обязательное поле для ввода возраста");
                             return;
