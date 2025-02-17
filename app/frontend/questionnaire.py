@@ -88,7 +88,7 @@ async def html_landing():
 
                     <div class="button-group">
                         <button class='card' onclick='showInput("age")'>Возраст</button>
-                        <input type='number' id='age-input' class='input-field' min='1' max='150' required>
+                        <input type='text' id='age-input' class='input-field' minlength="1" maxlength="3" required>
 
                         <button class='card' onclick='showInput("hobbies")'>Хобби</button>
                         <input type='text' id='hobbies-input' class='input-field'>
