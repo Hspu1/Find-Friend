@@ -1,16 +1,16 @@
 from fastapi import APIRouter, Request, HTTPException
 from sqlalchemy.exc import IntegrityError
 
-from app.core import async_session_maker
+from app.core import async_session_maker, UsersModel, ContactsModel
 
-save_data_router = APIRouter()
+save_questionnaire_user_data_router = APIRouter()
 
 
-@save_data_router.post(path="/save_data", status_code=201)
+@save_questionnaire_user_data_router.post(path="/save_data", status_code=201)
 async def save_data(request: Request):
     form_data = await request.json()
     print(
-        "Файл с кодом - save_data.py",
+        "Файл с кодом - save_questionnaire_user_data.py",
         {
             "Имя": form_data["username"],
             "Возраст": form_data["age"],
@@ -23,11 +23,16 @@ async def save_data(request: Request):
         }
     )
 
+    # int(form_data["age"]) - ВАЖНО: На стороне фронтенда
+    # поле для ввода возраста имеет тип ТЕКСТА, а НЕ ЧИСЛА
+    questionnaire_user_data = UsersModel(
+        username=form_data["username"], age=int(form_data["age"]),
+    )
+
     try:
         async with async_session_maker() as session:
             async with session.begin():
-                session.add(new_user_data)
-
+                session.add(questionnaire_user_data, ContactsModel(username="TESTING_FEATURE"))
 
     except IntegrityError:
         raise HTTPException(status_code=409)

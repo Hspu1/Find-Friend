@@ -7,7 +7,8 @@ from starlette.middleware.sessions import SessionMiddleware
 from uvicorn import run
 
 from app.backend import (
-    submit_password_router, save_data_router, get_latest_username_router
+    submit_password_router, save_questionnaire_user_data_router,
+    get_latest_username_router
 )
 from app.frontend import (
     homepage_router, login_with_name_router, auth_denied_router,
@@ -37,7 +38,7 @@ app.add_middleware(
 )
 # Backend
 app.include_router(submit_password_router)
-app.include_router(save_data_router)
+app.include_router(save_questionnaire_user_data_router)
 app.include_router(get_latest_username_router)
 
 # Frontend
