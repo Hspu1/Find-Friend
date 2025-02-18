@@ -27,7 +27,7 @@ async def save_data(request: Request):
     # поле для ввода возраста имеет тип ТЕКСТА, а НЕ ЧИСЛА
     questionnaire_user_data = UsersModel(
         username=form_data["username"], age=int(form_data["age"]),
-        # hobbies=form_data["hobbies"], bio=form_data["bio"],
+        hobbies=form_data["hobbies"], bio=form_data["bio"],
         # contact_me=form_data["username"]
     )
 
