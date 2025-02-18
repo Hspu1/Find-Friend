@@ -34,7 +34,7 @@ async def save_data(request: Request):
     try:
         async with async_session_maker() as session:
             async with session.begin():
-                session.add(questionnaire_user_data, ContactsModel(username="TESTING_FEATURE"))
+                session.add(questionnaire_user_data)
 
     except IntegrityError:
         raise HTTPException(status_code=409)
