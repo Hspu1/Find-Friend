@@ -6,7 +6,7 @@ from app.core import async_session_maker, UsersModel, ContactsModel
 save_questionnaire_user_data_router = APIRouter()
 
 
-@save_questionnaire_user_data_router.post(path="/save_data", status_code=201)
+@save_questionnaire_user_data_router.post(path="/save_questionnaire_user_data", status_code=201)
 async def save_data(request: Request):
     form_data = await request.json()
     print(
@@ -27,6 +27,8 @@ async def save_data(request: Request):
     # поле для ввода возраста имеет тип ТЕКСТА, а НЕ ЧИСЛА
     questionnaire_user_data = UsersModel(
         username=form_data["username"], age=int(form_data["age"]),
+        # hobbies=form_data["hobbies"], bio=form_data["bio"],
+        # contact_me=form_data["username"]
     )
 
     try:

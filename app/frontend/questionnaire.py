@@ -152,7 +152,7 @@ async def html_landing():
                             otherContactInfo: document.getElementById("other-contact-info-input").value || null
                         }};
 
-                        fetch("http://127.0.0.1:8000/save_data", {{
+                        fetch("http://127.0.0.1:8000/save_questionnaire_user_data", {{
                             method: "POST",
                             headers: {{ "Content-Type": "application/json" }},
                             body: JSON.stringify(data)
