@@ -18,9 +18,5 @@ async def submit_password(username: str = Form(...), password: str = Form(...)):
             async with session.begin():
                 session.add(new_user_data)
 
-                return {
-                    "msg": "Success"
-                }
-
     except IntegrityError:
         raise HTTPException(status_code=409)
