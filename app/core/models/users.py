@@ -15,7 +15,11 @@ class UsersModel(Base):
 
     hobbies = Column(type_=String(50), nullable=True)
     bio = Column(type_=String(100), nullable=True)
-    contact_me = Column(String(20), ForeignKey("contacts.username"))
+
+    telegram = Column(type_=String(50), nullable=True, unique=True, index=True)
+    email = Column(type_=String(50), nullable=True, unique=True)
+    phone = Column(type_=String(30), nullable=True, unique=True)
+    other = Column(type_=String(100), nullable=True, unique=True)
 
     created_at = Column(
         type_=DateTime(timezone=True), server_default=func.now()
