@@ -1,7 +1,8 @@
-from fastapi import APIRouter
-from starlette.responses import HTMLResponse
+from fastapi import APIRouter, Form
+from starlette.responses import HTMLResponse, RedirectResponse
 
 homepage_router = APIRouter()
+
 
 @homepage_router.get("/", response_class=HTMLResponse)
 def html_landing():
@@ -158,9 +159,15 @@ def html_landing():
                 <div class="login-form-container">
                     <button id="login-btn" onclick="showLoginForm()">Войти в аккаунт</button>
                     <div class="login-form" id="login-form">
-                        <input type="text" id="username" maxlength="20" placeholder="Имя">
-                        <input type="password" id="password" minlength="5" maxlength="12" placeholder="Пароль">
-                        <button onclick="checkForm()"><b>Готово!</b></button>
+                        <form action="/login" method="post">
+                            <input type="text" id="username" name="username" maxlength="20" placeholder="Имя" required 
+                                   oninvalid="this.setCustomValidity('Пожалуйста, введите ваше имя')" 
+                                   oninput="this.setCustomValidity('')">
+                            <input type="password" id="password" name="password" minlength="5" maxlength="12" placeholder="Пароль" required 
+                                   oninvalid="this.setCustomValidity('Введённый пароль содержит меньше 5 символов')" 
+                                   oninput="this.setCustomValidity('')">
+                            <button type="submit"><b>Готово!</b></button>
+                        </form>
                     </div>
                 </div>
                 <button class="register-button" onclick="window.location.href='http://127.0.0.1:8000/login'">Зарегистрироваться</button>
@@ -178,33 +185,6 @@ def html_landing():
                     loginForm.classList.add('show');
                 }
             }
-
-            function checkForm() {
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-                const errorMessage = document.getElementById('error-message');
-                const errorText = document.getElementById('error-text');
-
-                if (username === '') {
-                    errorText.innerText = 'Пожалуйста, введите имя'
-                    errorMessage.classList.add('show');
-                } else if (password === '') {
-                    errorText.innerText = 'Пожалуйста, введите пароль'
-                    errorMessage.classList.add('show');
-                } else if (password.length < 5) {
-                    errorText.innerText = 'Пароль должен быть не менее 5 символов'
-                    errorMessage.classList.add('show');
-                } else if (password.length > 12) {
-                    errorText.innerText = 'Пароль должен быть не более 12 символов'
-                    errorMessage.classList.add('show');
-                } else {
-                    // Здесь можно добавить логику для отправки формы
-                    console.log('Форма заполнена корректно:', username, password);
-                    errorMessage.classList.remove('show');
-                    window.location.href = 'http://example.com'; // Переадресация на произвольный адрес
-                }
-            }
-
             function closeError() {
                 const errorMessage = document.getElementById('error-message');
                 errorMessage.classList.remove('show');
@@ -213,3 +193,11 @@ def html_landing():
     </body>
     </html>
     """
+
+
+@homepage_router.post("/login")
+async def login(username: str = Form(...), password: str = Form(...)):
+    print(f"Имя пользователя: {username}")
+    print(f"Пароль: {password}")
+
+    return RedirectResponse(url="http://example.com", status_code=303)
