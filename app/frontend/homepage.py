@@ -1,5 +1,8 @@
 from fastapi import APIRouter, Form
+from sqlalchemy import select
 from starlette.responses import HTMLResponse, RedirectResponse
+
+from app.core import async_session_maker, AuthModel
 
 homepage_router = APIRouter()
 
@@ -196,7 +199,7 @@ def html_landing():
 
 
 @homepage_router.post("/login")
-async def login(username: str = Form(...), password: str = Form(...)):
+def login(username: str = Form(...), password: str = Form(...)):
     print(f"Имя пользователя: {username}")
     print(f"Пароль: {password}")
 
