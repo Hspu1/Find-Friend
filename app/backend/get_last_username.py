@@ -1,6 +1,5 @@
-from fastapi import HTTPException, APIRouter
+from fastapi import APIRouter
 from sqlalchemy import select, desc
-from sqlalchemy.exc import IntegrityError
 
 from app.core import async_session_maker, AuthModel
 

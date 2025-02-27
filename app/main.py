@@ -8,7 +8,7 @@ from uvicorn import run
 
 from app.backend import (
     submit_password_router, save_questionnaire_user_data_router,
-    get_latest_username_router
+    get_latest_username_router, login_router
 )
 from app.frontend import (
     homepage_router, login_with_name_router, auth_denied_router,
@@ -40,6 +40,7 @@ app.add_middleware(
 app.include_router(submit_password_router)
 app.include_router(save_questionnaire_user_data_router)
 app.include_router(get_latest_username_router)
+app.include_router(login_router)
 
 # Frontend
 app.include_router(homepage_router)

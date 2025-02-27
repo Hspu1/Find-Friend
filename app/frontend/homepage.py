@@ -1,9 +1,5 @@
-import bcrypt
-from fastapi import APIRouter, Form
-from sqlalchemy import select
-from starlette.responses import HTMLResponse, RedirectResponse
-
-from app.core import async_session_maker, AuthModel
+from fastapi import APIRouter
+from starlette.responses import HTMLResponse
 
 homepage_router = APIRouter()
 
@@ -197,17 +193,3 @@ def html_landing():
     </body>
     </html>
     """
-
-
-@homepage_router.post("/login")
-async def login(username: str = Form(...), password: str = Form(...)):
-    async with (async_session_maker() as session):
-        result = await session.execute(
-            select(AuthModel).where(AuthModel.username == username)
-        )
-
-        response = result.scalars().first()
-        if (response is not None) and (
-                bcrypt.checkpw(password.encode('utf-8'), response.hashed_psw.encode('utf-8'))
-        ):
-            return RedirectResponse(url="http://example.com", status_code=303)
