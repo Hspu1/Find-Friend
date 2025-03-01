@@ -159,7 +159,7 @@ async def html_landing():
                         }})
                         .then(response => {{
                             if (response.ok) {{
-                                window.location.href = "http://127.0.0.1:8000/settings_page";
+                                window.location.href = "http://127.0.0.1:8000/showing_questionnaires";
                             }} else {{
                                 return response.text().then(text => {{ throw new Error(text); }});
                             }}

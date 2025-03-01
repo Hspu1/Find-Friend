@@ -19,4 +19,4 @@ async def login(username: str = Form(...), password: str = Form(...)):
         if (response is not None) and (
                 bcrypt.checkpw(password.encode('utf-8'), response.hashed_psw.encode('utf-8'))
         ):
-            return RedirectResponse(url="http://127.0.0.1:8000/settings_page", status_code=303)
+            return RedirectResponse(url="http://127.0.0.1:8000/showing_questionnaires", status_code=303)
