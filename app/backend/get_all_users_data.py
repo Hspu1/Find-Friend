@@ -12,4 +12,5 @@ async def get_all_users_data():
         result = await session.execute(select(UsersModel))
 
         response = result.scalars().all()
-        print(response)
+        for user_data in response:
+            print(user_data)
