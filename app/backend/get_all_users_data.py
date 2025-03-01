@@ -38,6 +38,7 @@ async def get_all_users_data(
                     "updated_at": user.updated_at
                 }
                 for user in response
+                # list компрэхэншоны
             ],
 
             "page": page,
