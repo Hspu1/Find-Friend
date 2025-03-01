@@ -8,7 +8,7 @@ from app.core import async_session_maker, AuthModel
 login_router = APIRouter()
 
 
-@login_router.post("/login")
+@login_router.post(path="/login")
 async def login(username: str = Form(...), password: str = Form(...)):
     async with (async_session_maker() as session):
         result = await session.execute(
