@@ -57,7 +57,7 @@ async def html_landing():
                 border: none;
                 cursor: pointer;
                 margin-top: 5px;
-                border-radius: 10px;
+                border-radius: 4px; /* Чуточку закругленные углы */
                 transition: background-color 0.2s ease;
             }}
             .card:hover {{
@@ -70,7 +70,7 @@ async def html_landing():
                 padding: 10px;
                 font-size: 16px;
                 border: none;
-                border-radius: 5px;
+                border-radius: 4px; /* Чуточку закругленные углы */
                 background-color: rgba(30, 30, 30, 0.9); /* Поля для ввода светлее кнопок */
                 color: white;
                 transition: opacity 0.3s ease, transform 0.3s ease;
@@ -100,7 +100,7 @@ async def html_landing():
                 padding: 10px;
                 font-size: 16px;
                 border: none;
-                border-radius: 5px;
+                border-radius: 4px; /* Чуточку закругленные углы */
                 background-color: rgba(30, 30, 30, 0.9); /* Поля для ввода светлее кнопок */
                 color: white;
                 margin-bottom: 10px;
@@ -113,7 +113,7 @@ async def html_landing():
                 background-color: rgba(15, 15, 15, 0.9); /* Темнее, чем поля для ввода */
                 color: white;
                 border: none;
-                border-radius: 10px;
+                border-radius: 4px; /* Чуточку закругленные углы */
                 cursor: pointer;
                 transition: background-color 0.2s ease;
             }}
@@ -125,34 +125,33 @@ async def html_landing():
     <body>
         <div class='container'>
             <h1>Имя - {username}</h1> <!-- Имя пользователя -->
-    
+
             <div class="button-group">
                 <button class='card' onclick='showInput("age")'>Возраст</button>
                 <input type="text" id="age-input" class="input-field" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
-    
                 <button class='card' onclick='showInput("hobbies")'>Хобби</button>
-                <textarea id='hobbies-input' class='input-field' rows='2' cols='30' maxlength='50'></textarea> <!-- Поле для хобби в две строки -->
-    
+                <textarea id='hobbies-input' class='input-field' rows='2' cols='30' maxlength='50'></textarea>
+
                 <button class='card' onclick='showInput("bio")'>О себе</button>
                 <textarea id='bio-textarea' class='input-field' rows='5' cols='30' maxlength='100'></textarea>
-    
+
                 <button class='card' onclick='showContactMe()'>Связаться со мной</button>
-    
+
                 <div id='contact-me-container'>
                     <input type='text' id='telegram-input' placeholder='Телеграмм' maxlength='50'><br/>
                     <input type='email' id='email-input' placeholder='Email' maxlength='50'><br/>
                     <input type='tel' id='phone-input' placeholder='Телефон' maxlength='30'><br/>
                     <input type='text' id='other-contact-info-input' placeholder='Другое' maxlength='100'><br/>
                 </div>
-    
+
                 <button class='card' id='done-button' onclick='submitForm()'>Готово!</button>
             </div>
         </div>
-    
+
         <script>
             function showInput(inputId) {{
                 const input = document.getElementById(inputId + "-input") || document.getElementById(inputId + "-textarea");
-    
+
                 if (input) {{
                     if (input.classList.contains('show')) {{
                         input.classList.remove('show');
@@ -165,17 +164,17 @@ async def html_landing():
                                 setTimeout(() => field.style.display = 'none', 300); // Задержка для анимации
                             }}
                         }});
-    
+
                         input.style.display = 'block';
                         setTimeout(() => input.classList.add('show'), 10); // Задержка для анимации
                         input.focus();
                     }}
                 }}
             }}
-    
+
             function showContactMe() {{
                 const contactContainer = document.getElementById("contact-me-container");
-    
+
                 if (contactContainer.classList.contains('show')) {{
                     contactContainer.classList.remove('show');
                     setTimeout(() => contactContainer.style.display = 'none', 300); // Задержка для анимации
@@ -184,15 +183,15 @@ async def html_landing():
                     setTimeout(() => contactContainer.classList.add('show'), 10); // Задержка для анимации
                 }}
             }}
-    
+
             function submitForm() {{
                 const ageInput = document.getElementById("age-input");
-    
+
                 if (!ageInput.value) {{
                     alert("Вы не заполнили обязательное поле для ввода возраста");
                     return;
                 }}
-    
+
                 const data = {{
                     username: "{username}",
                     age: ageInput.value,
@@ -203,7 +202,7 @@ async def html_landing():
                     phone: document.getElementById("phone-input").value || null,
                     otherContactInfo: document.getElementById("other-contact-info-input").value || null
                 }};
-    
+
                 fetch("http://127.0.0.1:8000/save_questionnaire_user_data", {{
                     method: "POST",
                     headers: {{ "Content-Type": "application/json" }},
