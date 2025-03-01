@@ -3,7 +3,7 @@ __all__ = (
     "save_questionnaire_user_data_router",
     "get_latest_username_router",
     "login_router",
-    "get_all_users_data"
+    "get_all_users_data_router"
 )
 
 from .submit_password import submit_password_router
