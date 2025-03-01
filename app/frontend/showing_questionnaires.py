@@ -83,10 +83,13 @@ def html_landing():
                 display: none; /* Скрываем дополнительные поля */
                 margin-top: 10px;
             }
+    
+            /* Отступ после "О себе" */
             .user-card .details p:nth-of-type(2) {
                 margin-bottom: 20px;
             }
     
+            /* Отступы перед и после "Другое" */
             .user-card .details p:nth-of-type(6) {
                 margin-top: 20px;
                 margin-bottom: 20px;
@@ -199,6 +202,17 @@ def html_landing():
     
             // Функция для раскрытия/скрытия деталей карточки
             function toggleDetails(card) {
+                // Закрываем все открытые анкеты
+                const allCards = document.querySelectorAll('.user-card.open');
+                allCards.forEach(openCard => {
+                    if (openCard !== card) { // Не закрываем текущую анкету
+                        openCard.classList.remove('open');
+                        const details = openCard.querySelector('.details');
+                        details.style.display = 'none';
+                    }
+                });
+    
+                // Открываем/закрываем текущую анкету
                 card.classList.toggle('open');
                 const details = card.querySelector('.details');
                 details.style.display = details.style.display === 'block' ? 'none' : 'block';
