@@ -24,19 +24,27 @@ def html_landing():
                     padding: 0;
                     height: 100vh;
                     display: flex;
+                    flex-direction: column;
                     justify-content: center;
                     align-items: center;
                     background-image: url('https://github.com/user-attachments/assets/9aec2db1-371c-4c3b-bc95-0bbc8dd1c8bd');
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center;
+                    background-attachment: fixed;
                 }}
                 .container {{
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    margin-top: 100px;
                     gap: 20px;
+                    position: absolute; /* Абсолютное позиционирование */
+                    top: 50%; /* Позиция сверху */
+                    left: 50%; /* Позиция слева */
+                    transform: translate(-50%, -37px);
+                }}
+                .back-button {{
+                    margin-top: 45px; /* Смещение кнопки "Назад" вниз */
                 }}
                 .input-button-container {{
                     display: flex;
@@ -47,15 +55,24 @@ def html_landing():
                     padding: 15px;
                     font-size: 18px;
                     width: 300px;
+                    border: none;
+                    border-radius: 4px;
+                    background-color: rgba(30, 30, 30, 0.9);
+                    color: white;
                 }}
                 button {{
-                    background-color: black;
+                    background-color: rgba(15, 15, 15, 0.9);
                     color: white;
                     border: none;
-                    padding: 20px 40px;
+                    padding: 15px 30px;
                     cursor: pointer;
                     font-size: 18px;
                     font-weight: bold;
+                    border-radius: 4px;
+                    transition: background-color 0.2s ease;
+                }}
+                button:hover {{
+                    background-color: rgba(40, 40, 40, 0.9);
                 }}
             </style>
         </head>
@@ -65,7 +82,9 @@ def html_landing():
                     <input type="password" id="password" placeholder="Пароль" minlength="5" maxlength="12" required>
                     <button onclick="submitPassword()">Зарегестрироваться</button>
                 </div>
-                <button onclick="window.location.href='http://127.0.0.1:8000/login_with_name'">Назад</button>
+                <div class="back-button">
+                    <button onclick="window.location.href='http://127.0.0.1:8000/login_with_name'">Назад</button>
+                </div>
             </div>
 
             <script>
