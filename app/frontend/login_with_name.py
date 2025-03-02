@@ -3,10 +3,8 @@ from starlette.responses import HTMLResponse
 
 from app.google_auth import fake_firstnames_db
 
-
 login_with_name_router = APIRouter()
 fake_new_names_db = []
-
 
 @login_with_name_router.get("/login_with_name", response_class=HTMLResponse)
 def html_landing():
@@ -22,6 +20,7 @@ def html_landing():
                     padding: 0;
                     height: 100vh;
                     display: flex;
+                    flex-direction: column;
                     justify-content: center;
                     align-items: center;
                     background-image: url('https://github.com/user-attachments/assets/9aec2db1-371c-4c3b-bc95-0bbc8dd1c8bd');
@@ -35,16 +34,24 @@ def html_landing():
                     flex-direction: column;
                     gap: 20px;
                     align-items: center;
-                    margin-top: 100px;
+                    position: absolute; /* Абсолютное позиционирование */
+                    top: 50%; /* Позиция сверху */
+                    left: 50%; /* Позиция слева */
+                    transform: translate(-50%, -60px); /* Смещение вверх на 60 пикселей */
                 }}
                 button {{
-                    background-color: black;
+                    background-color: rgba(15, 15, 15, 0.9);
                     color: white;
                     border: none;
-                    padding: 20px 40px;
+                    padding: 15px 30px;
                     cursor: pointer;
                     font-size: 18px;
                     font-weight: bold;
+                    border-radius: 4px;
+                    transition: background-color 0.2s ease;
+                }}
+                button:hover {{
+                    background-color: rgba(40, 40, 40, 0.9);
                 }}
             </style>
         </head>
