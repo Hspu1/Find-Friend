@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from starlette.responses import HTMLResponse
 
-
 change_name_router = APIRouter()
 
 
@@ -17,6 +16,7 @@ def html_landing():
                     padding: 0;
                     height: 100vh;
                     display: flex;
+                    flex-direction: column;
                     justify-content: center;
                     align-items: center;
                     background-image: url('https://github.com/user-attachments/assets/9aec2db1-371c-4c3b-bc95-0bbc8dd1c8bd');
@@ -30,21 +30,33 @@ def html_landing():
                     flex-direction: column;
                     align-items: center;
                     gap: 20px;
-                    margin-top: 100px;
+                    position: absolute; /* Абсолютное позиционирование */
+                    top: 50%; /* Позиция сверху */
+                    left: 50%; /* Позиция слева */
+                    transform: translate(-50%, -45px); /* Смещение вверх на 45 пикселей */
                 }
                 input {
                     padding: 15px;
                     font-size: 18px;
                     width: 300px;
+                    border: none;
+                    border-radius: 4px;
+                    background-color: rgba(30, 30, 30, 0.9);
+                    color: white;
                 }
                 button {
-                    background-color: black;
+                    background-color: rgba(15, 15, 15, 0.9);
                     color: white;
                     border: none;
-                    padding: 20px 40px;
+                    padding: 15px 30px;
                     cursor: pointer;
                     font-size: 18px;
                     font-weight: bold;
+                    border-radius: 4px;
+                    transition: background-color 0.2s ease;
+                }
+                button:hover {
+                    background-color: rgba(40, 40, 40, 0.9);
                 }
             </style>
         </head>
