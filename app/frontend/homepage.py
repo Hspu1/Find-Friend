@@ -3,7 +3,6 @@ from starlette.responses import HTMLResponse
 
 homepage_router = APIRouter()
 
-
 @homepage_router.get("/", response_class=HTMLResponse)
 def html_landing():
     return """
@@ -25,16 +24,16 @@ def html_landing():
                 background-attachment: fixed;
             }
             .center-container {
-                margin-top: 10vh; 
+                margin-top: 10vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 40px; 
+                gap: 40px;
             }
             .glow-text {
-                font-size: 48px; 
-                font-weight: bold; 
-                color: #32CD32; 
+                font-size: 48px;
+                font-weight: bold;
+                color: #32CD32;
                 text-shadow:
                     0 0 10px #32CD32,
                     0 0 20px #32CD32,
@@ -43,18 +42,18 @@ def html_landing():
             }
             .glow-text span {
                 display: inline-block;
-                animation: color-animation 0.5s infinite alternate, scale-animation 1s infinite alternate; 
+                animation: color-animation 0.5s infinite alternate, scale-animation 1s infinite alternate;
             }
             @keyframes color-animation {
                 from {
-                    color: #32CD32; 
+                    color: #32CD32;
                     text-shadow:
                         0 0 10px #32CD32,
                         0 0 20px #32CD32,
                         0 0 30px rgba(50, 205, 50, 0.5);
                 }
                 to {
-                    color: #40E0D0; 
+                    color: #40E0D0;
                     text-shadow:
                         0 0 10px #40E0D0,
                         0 0 20px #40E0D0,
@@ -71,23 +70,29 @@ def html_landing():
             }
             .button-container {
                 display: flex;
-                justify-content: center; /* Измените на center или space-between */
-                width: auto; /* Автоматическая ширина */
+                justify-content: center;
+                width: auto;
                 margin-top: 400px;
-                gap: 20px;
+                gap: 60px;
             }
-            .button-container button {
-                background-color: black;
+            .button-container button, .login-form button {
+                background-color: rgba(15, 15, 15, 0.9);
                 color: white;
                 border: none;
                 padding: 10px 20px;
                 cursor: pointer;
-                font-size: 16px;
+                font-size: 18px;
                 font-weight: bold;
+                border-radius: 4px;
+                transition: background-color 0.2s ease;
+            }
+            .button-container button:hover, .login-form button:hover {
+                background-color: rgba(40, 40, 40, 0.9);
             }
             .login-form {
                 display: none;
                 margin-top: 20px;
+                text-align: left; /* Выравнивание по левой стороне */
             }
             .login-form.show {
                 display: block;
@@ -97,20 +102,19 @@ def html_landing():
                 margin-bottom: 10px;
                 display: block;
                 width: 100%;
+                border: none;
+                border-radius: 4px;
+                background-color: rgba(30, 30, 30, 0.9);
+                color: white;
             }
             .login-form button {
-                background-color: black;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                cursor: pointer;
-                font-weight: bold;
-                width: 100%;
+                width: 100%; /* Занимает всю ширину */
+                text-align: left; /* Выравнивание текста по левой стороне */
             }
             .error-message {
                 position: fixed;
-                top: 30px; 
-                left: 40px; 
+                top: 30px;
+                left: 40px;
                 background-color: #f0f0f0;
                 padding: 10px;
                 border-radius: 5px;
@@ -121,7 +125,7 @@ def html_landing():
             }
             .close-error {
                 float: right;
-                margin-left: 10px; 
+                margin-left: 10px;
                 cursor: pointer;
             }
             .login-form-container {
@@ -130,9 +134,15 @@ def html_landing():
                 align-items: center;
             }
             .register-button {
-                max-width: 200px; /* Максимальная ширина */
-                max-height: 40px; /* Максимальная высота */
-                flex-shrink: 0; /* Чтобы кнопка не сжималась */
+                max-width: 240px;
+                max-height: 40px;
+                flex-shrink: 0;
+                padding: 10px 15px;
+                box-sizing: border-box;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 16px;
             }
         </style>
     </head>
@@ -160,11 +170,11 @@ def html_landing():
                     <button id="login-btn" onclick="showLoginForm()">Войти в аккаунт</button>
                     <div class="login-form" id="login-form">
                         <form action="/login" method="post">
-                            <input type="text" id="username" name="username" maxlength="20" placeholder="Имя" required 
-                                   oninvalid="this.setCustomValidity('Пожалуйста, введите ваше имя')" 
+                            <input type="text" id="username" name="username" maxlength="20" placeholder="Имя" required
+                                   oninvalid="this.setCustomValidity('Пожалуйста, введите ваше имя')"
                                    oninput="this.setCustomValidity('')">
-                            <input type="password" id="password" name="password" minlength="5" maxlength="12" placeholder="Пароль" required 
-                                   oninvalid="this.setCustomValidity('Введённый пароль содержит меньше 5 символов')" 
+                            <input type="password" id="password" name="password" minlength="5" maxlength="12" placeholder="Пароль" required
+                                   oninvalid="this.setCustomValidity('Введённый пароль содержит меньше 5 символов')"
                                    oninput="this.setCustomValidity('')">
                             <button type="submit"><b>Готово!</b></button>
                         </form>
