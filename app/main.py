@@ -36,6 +36,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_headers=["*"],
 )
+
 # Backend
 app.include_router(submit_password_router)
 app.include_router(save_questionnaire_user_data_router)
