@@ -29,7 +29,6 @@ def html_landing():
                     flex-direction: column;
                     gap: 20px;
                     align-items: center;
-                    margin-top: 100px;
                 }}
                 .message {{
                     color: white;
@@ -44,13 +43,18 @@ def html_landing():
                     text-align: center;
                 }}
                 button {{
-                    background-color: black;
+                    background-color: rgba(15, 15, 15, 0.9);
                     color: white;
                     border: none;
-                    padding: 20px 40px;
+                    padding: 15px 30px;
                     cursor: pointer;
                     font-size: 18px;
                     font-weight: bold;
+                    border-radius: 4px;
+                    transition: background-color 0.2s ease;
+                }}
+                button:hover {{
+                    background-color: rgba(40, 40, 40, 0.9);
                 }}
             </style>
         </head>
