@@ -6,6 +6,7 @@ from app.google_auth import fake_firstnames_db
 login_with_name_router = APIRouter()
 fake_new_names_db = []
 
+
 @login_with_name_router.get("/login_with_name", response_class=HTMLResponse)
 def html_landing():
     fake_new_names_db.append(fake_firstnames_db[-1])
@@ -37,7 +38,10 @@ def html_landing():
                     position: absolute; /* Абсолютное позиционирование */
                     top: 50%; /* Позиция сверху */
                     left: 50%; /* Позиция слева */
-                    transform: translate(-50%, -60px); /* Смещение вверх на 60 пикселей */
+                    transform: translate(-50%, -50px); /* Смещение вниз на 10 пикселей */
+                }}
+                .back-button {{
+                    margin-top: 30px; /* Смещение кнопки "Назад" вниз */
                 }}
                 button {{
                     background-color: rgba(15, 15, 15, 0.9);
@@ -63,9 +67,11 @@ def html_landing():
                 <button onclick="window.location.href='http://127.0.0.1:8000/change_name'">
                     Изменить имя
                 </button>
-                <button onclick="window.location.href='http://127.0.0.1:8000/'">
-                    Назад
-                </button>
+                <div class="back-button">
+                    <button onclick="window.location.href='http://127.0.0.1:8000/'">
+                        Назад
+                    </button>
+                </div>
             </div>
         </body>
         </html>
