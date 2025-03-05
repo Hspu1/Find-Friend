@@ -167,7 +167,7 @@ def html_landing():
 
             // Функция для загрузки данных с бэкенда
             async function fetchUsers(page) {
-                const response = await fetch(`/get_all_users_data?page=${page}&limit=5`);
+                const response = await fetch(`/get_all_users_data?page=${page}&limit=3`);
                 const data = await response.json();
                 return data;
             }
@@ -226,7 +226,7 @@ def html_landing():
             function updatePagination(page, total) {
                 document.getElementById('page-info').textContent = `Страница ${page}`;
                 document.getElementById('prev-page').disabled = page === 1;
-                document.getElementById('next-page').disabled = total < 5; // Если записей меньше, чем limit, скрываем кнопку "Вперед"
+                document.getElementById('next-page').disabled = total < 3; // Если записей меньше, чем limit, скрываем кнопку "Вперед"
             }
 
             // Функция для загрузки страницы

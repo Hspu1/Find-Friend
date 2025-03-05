@@ -9,7 +9,7 @@ get_all_users_data_router = APIRouter()
 @get_all_users_data_router.get(path="/get_all_users_data", status_code=200)
 async def get_all_users_data(
     page: int = Query(ge=1),
-    limit: int = Query(5, ge=1)
+    limit: int = Query(3, ge=1)
 ):
     async with async_session_maker() as session:
         # Вычисляем смещение для пагинации
