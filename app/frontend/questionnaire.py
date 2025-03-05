@@ -42,6 +42,9 @@ async def html_landing():
                              1px -1px 0 black, -1px 1px 0 black, 
                              1px 1px 0 black;
             }}
+            .glow {{
+                text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+            }}
             .button-group {{
                 margin-top: 270px;
                 display: flex;
@@ -124,7 +127,7 @@ async def html_landing():
     </head>
     <body>
         <div class='container'>
-            <h1>Имя - {username}</h1> <!-- Имя пользователя -->
+            <h1>Имя - <span class="glow">{username}</span></h1> <!-- Имя пользователя с эффектом свечения -->
 
             <div class="button-group">
                 <button class='card' onclick='showInput("age")'>Возраст</button>
