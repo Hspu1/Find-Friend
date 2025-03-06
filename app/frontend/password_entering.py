@@ -41,10 +41,7 @@ def html_landing():
                     position: absolute; /* Абсолютное позиционирование */
                     top: 50%; /* Позиция сверху */
                     left: 50%; /* Позиция слева */
-                    transform: translate(-50%, -37px);
-                }}
-                .back-button {{
-                    margin-top: 45px; /* Смещение кнопки "Назад" вниз */
+                    transform: translate(-50%, -45px); /* Смещение вверх на 45 пикселей */
                 }}
                 .input-button-container {{
                     display: flex;
@@ -82,9 +79,7 @@ def html_landing():
                     <input type="password" id="password" placeholder="Пароль" minlength="5" maxlength="12" required>
                     <button onclick="submitPassword()">Зарегестрироваться</button>
                 </div>
-                <div class="back-button">
-                    <button onclick="window.location.href='http://127.0.0.1:8000/login_with_name'">Назад</button>
-                </div>
+                <button onclick="window.location.href='http://127.0.0.1:8000/login_with_name'">Назад</button>
             </div>
 
             <script>
