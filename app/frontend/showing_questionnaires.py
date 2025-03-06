@@ -3,6 +3,7 @@ from starlette.responses import HTMLResponse
 
 showing_questionnaires = APIRouter()
 
+
 @showing_questionnaires.get("/showing_questionnaires", response_class=HTMLResponse)
 def html_landing():
     return """
@@ -53,7 +54,7 @@ def html_landing():
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             width: 100%;
             cursor: pointer; /* Курсор указывает, что карточку можно нажать */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             color: #ffffff; /* Белый текст */
         }
 
@@ -80,7 +81,7 @@ def html_landing():
         .user-card .details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-in-out; /* Уменьшили время анимации */
+            transition: max-height 0.2s ease-in-out; /* Уменьшили время анимации */
             margin-top: 10px;
         }
 
@@ -136,7 +137,7 @@ def html_landing():
         .user-card .arrow {
             float: right;
             font-size: 1.2em;
-            transition: transform 0.3s ease; /* Уменьшили время анимации */
+            transition: transform 0.2s ease; /* Уменьшили время анимации */
         }
 
         .user-card.open .arrow {
