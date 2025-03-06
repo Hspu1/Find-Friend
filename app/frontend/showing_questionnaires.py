@@ -1,12 +1,9 @@
 from fastapi import APIRouter
 from starlette.responses import HTMLResponse
 
-
 showing_questionnaires = APIRouter()
 
-
-@showing_questionnaires.get("/showing_questionnaires",
-                            response_class=HTMLResponse)
+@showing_questionnaires.get("/showing_questionnaires", response_class=HTMLResponse)
 def html_landing():
     return """
 <!DOCTYPE html>
@@ -83,7 +80,7 @@ def html_landing():
         .user-card .details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
+            transition: max-height 0.3s ease-in-out; /* Уменьшили время анимации */
             margin-top: 10px;
         }
 
@@ -139,7 +136,7 @@ def html_landing():
         .user-card .arrow {
             float: right;
             font-size: 1.2em;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease; /* Уменьшили время анимации */
         }
 
         .user-card.open .arrow {
@@ -208,17 +205,22 @@ def html_landing():
                 const bioLines = splitText(user.bio, 50);
                 const otherLines = splitText(user.other, 50);
 
+                // Функция для замены null на "Не заполнено" курсивом
+                const replaceNull = (value) => {
+                    return value === null || value === undefined ? '<i>Не заполнено</i>' : value;
+                };
+
                 return `
                     <div class="user-card" onclick="toggleDetails(this)">
-                        <h3>${user.username}</h3>
-                        <p>Возраст: ${user.age}</p>
+                        <h3>${replaceNull(user.username)}</h3>
+                        <p>Возраст: ${replaceNull(user.age)}</p>
                         <div class="details">
-                            <p>Хобби: ${user.hobbies}</p>
-                            <p class="multiline">О себе: ${bioLines}</p>
-                            <p>Телеграм: ${user.telegram}</p>
-                            <p>Email: ${user.email}</p>
-                            <p>Телефон: ${user.phone}</p>
-                            <p class="multiline">Другое: ${otherLines}</p>
+                            <p>Хобби: ${replaceNull(user.hobbies)}</p>
+                            <p class="multiline">О себе: ${replaceNull(bioLines)}</p>
+                            <p>Телеграм: ${replaceNull(user.telegram)}</p>
+                            <p>Email: ${replaceNull(user.email)}</p>
+                            <p>Телефон: ${replaceNull(user.phone)}</p>
+                            <p class="multiline">Другое: ${replaceNull(otherLines)}</p>
                             <p>Создано: ${new Date(user.created_at).toLocaleString()}</p>
                         </div>
                         <span class="arrow">▼</span>
@@ -248,20 +250,20 @@ def html_landing():
             // Закрываем все открытые анкеты, кроме текущей
             document.querySelectorAll('.user-card.open').forEach(openCard => {
                 if (openCard !== card) {
+                    const openDetails = openCard.querySelector('.details');
                     openCard.classList.remove('open');
-                    openCard.querySelector('.details').style.maxHeight = '0';
+                    openDetails.style.maxHeight = '0';
                 }
             });
 
-            // Переключаем состояние текущей анкеты
             if (card.classList.contains('open')) {
-                // Если анкета открыта, закрываем ее
-                card.classList.remove('open');
+                // Если анкета открыта, сначала закрываем ее
                 details.style.maxHeight = '0';
+                card.classList.remove('open');
             } else {
                 // Если анкета закрыта, открываем ее
                 card.classList.add('open');
-                details.style.maxHeight = '500px'; // или другое подходящее значение
+                details.style.maxHeight = '500px';
             }
         }
 
