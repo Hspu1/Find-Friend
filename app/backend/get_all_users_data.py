@@ -35,7 +35,6 @@ async def get_all_users_data(
                     "phone": user.phone,
                     "other": user.other,
                     "created_at": user.created_at,
-                    "updated_at": user.updated_at
                 }
                 for user in response
                 # list компрэхэншоны

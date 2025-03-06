@@ -214,7 +214,6 @@ def html_landing():
                                 <p>Телефон: ${user.phone}</p>
                                 <p class="multiline">Другое: ${otherLines}</p>
                                 <p>Создано: ${new Date(user.created_at).toLocaleString()}</p>
-                                <p>Обновлено: ${new Date(user.updated_at).toLocaleString()}</p>
                             </div>
                             <span class="arrow">▼</span>
                         </div>

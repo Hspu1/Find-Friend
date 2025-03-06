@@ -1,5 +1,5 @@
 from sqlalchemy import (
-    Column, Integer, String, ForeignKey, DateTime, func
+    Column, Integer, String, DateTime, func
 )
 
 from app.core import Base
@@ -23,8 +23,4 @@ class UsersModel(Base):
 
     created_at = Column(
         type_=DateTime(timezone=True), server_default=func.now()
-    )
-    updated_at = Column(
-        type_=DateTime(timezone=True),
-        server_default=func.now(), onupdate=func.now()
     )
