@@ -168,6 +168,7 @@ def html_landing():
 
     <script>
         let currentPage = 1;
+        let totalPages = 1; // Добавим переменную для хранения общего количества страниц
 
         // Функция для загрузки данных с бэкенда
         async function fetchUsers(page) {
@@ -232,9 +233,14 @@ def html_landing():
 
         // Функция для обновления пагинации
         function updatePagination(page, total) {
-            document.getElementById('page-info').textContent = `Страница ${page}`;
+            const limit = 2; // Количество анкет на странице
+            totalPages = Math.ceil(total / limit); // Вычисляем общее количество страниц
+
+            document.getElementById('page-info').textContent = `Страница ${page} / ${totalPages}`;
             document.getElementById('prev-page').disabled = page === 1;
-            document.getElementById('next-page').disabled = total < 2; // Если записей меньше, чем limit, скрываем кнопку "Вперед"
+
+            // Проверяем, есть ли записи на следующей странице
+            document.getElementById('next-page').disabled = page === totalPages || totalPages === 0;
         }
 
         // Функция для загрузки страницы
@@ -277,8 +283,10 @@ def html_landing():
         });
 
         document.getElementById('next-page').addEventListener('click', () => {
-            currentPage++;
-            loadPage(currentPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadPage(currentPage);
+            }
         });
 
         // Загружаем первую страницу при загрузке
@@ -286,4 +294,5 @@ def html_landing():
     </script>
 </body>
 </html>
+
     """

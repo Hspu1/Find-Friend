@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query
-from sqlalchemy import select
+from sqlalchemy import select, func
 
 from app.core import async_session_maker, UsersModel
 
@@ -23,6 +23,11 @@ async def get_all_users_data(
         )
 
         response = result.scalars().all()
+
+        # Выполняем запрос для получения общего количества записей
+        total_result = await session.execute(select(func.count(UsersModel.username)))
+        total = total_result.scalar()
+
         return {
             "users": [
                 {
@@ -37,10 +42,9 @@ async def get_all_users_data(
                     "created_at": user.created_at,
                 }
                 for user in response
-                # list компрэхэншоны
             ],
 
             "page": page,
             "limit": limit,
-            "total": len(response)
+            "total": total
         }
