@@ -3,6 +3,7 @@ from starlette.responses import HTMLResponse
 
 homepage_router = APIRouter()
 
+
 @homepage_router.get("/", response_class=HTMLResponse)
 def html_landing():
     return """
@@ -92,7 +93,7 @@ def html_landing():
             .login-form {
                 display: none;
                 margin-top: 20px;
-                text-align: left; /* Выравнивание по левой стороне */
+                text-align: left;
             }
             .login-form.show {
                 display: block;
@@ -108,8 +109,8 @@ def html_landing():
                 color: white;
             }
             .login-form button {
-                width: 100%; /* Занимает всю ширину */
-                text-align: left; /* Выравнивание текста по левой стороне */
+                width: 100%;
+                text-align: left;
             }
             .error-message {
                 position: fixed;
@@ -144,12 +145,86 @@ def html_landing():
                 text-overflow: ellipsis;
                 font-size: 16px;
             }
+            /* Стили для иконки "!" */
+            .info-icon {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+                background-color: rgba(15, 15, 15, 0.9);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                box-shadow: 0 0 20px rgba(64, 224, 208, 0.7); /* Статическое свечение */
+            }
+            .info-icon:hover {
+                background-color: rgba(40, 40, 40, 0.9);
+            }
+            /* Стили для плашки с текстом */
+            .info-panel {
+                position: fixed;
+                top: 80px;
+                left: 20px;
+                background-color: rgba(15, 15, 15, 0.9);
+                padding: 22.5px;
+                border-radius: 7.5px;
+                color: white;
+                font-size: 21px;
+                display: none;
+                opacity: 0;
+                transform: scale(0.9);
+                animation: fade-in 0.5s ease-in-out forwards;
+            }
+            .info-panel.show {
+                display: block;
+            }
+            @keyframes fade-in {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            .info-panel p {
+                margin: 0;
+            }
+            .info-panel .label {
+                color: white;
+                font-weight: bold;
+                text-shadow:
+                    0 0 10px white,
+                    0 0 20px white,
+                    0 0 30px rgba(255, 255, 255, 0.7); /* Яркое свечение */
+            }
+            .info-panel .value {
+                color: #40E0D0;
+                font-weight: bold;
+                text-decoration: none;
+                text-shadow:
+                    0 0 10px #40E0D0,
+                    0 0 20px #40E0D0,
+                    0 0 30px rgba(64, 224, 208, 0.7); /* Свечение текста */
+            }
         </style>
     </head>
     <body>
         <div class="error-message" id="error-message">
             <span id="error-text"></span>
             <span class="close-error" onclick="closeError()">×</span>
+        </div>
+        <div class="info-icon" onclick="toggleInfoPanel()">!</div>
+        <div class="info-panel" id="info-panel">
+            <p><span class="label">Телеграм:</span> <a href="https://t.me/Hspu1" class="value">@Hspu1</a></p>
         </div>
         <div class="center-container">
             <div class="glow-text">
@@ -198,6 +273,10 @@ def html_landing():
             function closeError() {
                 const errorMessage = document.getElementById('error-message');
                 errorMessage.classList.remove('show');
+            }
+            function toggleInfoPanel() {
+                const infoPanel = document.getElementById('info-panel');
+                infoPanel.classList.toggle('show');
             }
         </script>
     </body>
