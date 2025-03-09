@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a58c53e531e0
+Revision ID: 88b2747421a5
 Revises: 
-Create Date: 2025-02-21 18:39:40.372477
+Create Date: 2025-03-09 21:03:33.028195
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'a58c53e531e0'
+revision: str = '88b2747421a5'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -39,14 +39,10 @@ def upgrade() -> None:
             sa.Column('phone', sa.String(length=30), nullable=True),
             sa.Column('other', sa.String(length=100), nullable=True),
             sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
-            sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
-            sa.PrimaryKeyConstraint('auth_id'),
-            sa.UniqueConstraint('email'),
-            sa.UniqueConstraint('other'),
-            sa.UniqueConstraint('phone')
+            sa.PrimaryKeyConstraint('auth_id')
     )
     op.create_index(op.f('ix_users_age'), 'users', ['age'], unique=False)
-    op.create_index(op.f('ix_users_telegram'), 'users', ['telegram'], unique=True)
+    op.create_index(op.f('ix_users_telegram'), 'users', ['telegram'], unique=False)
     op.create_index(op.f('ix_users_username'), 'users', ['username'], unique=True)
     # ### end Alembic commands ###
 
