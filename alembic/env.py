@@ -19,7 +19,7 @@ config = context.config
 #     "sqlalchemy.url", f"{db_url}?async_fallback=True"
 # )
 config.set_main_option(
-    "sqlalchemy.url", "postgresql+asyncpg://max:T1vbL25QfM4vB8agbtmywesqQWP5jsA9@dpg-cv6ulf5ds78s738ph8k0-a.oregon-postgres.render.com/db_3ahg"
+    "sqlalchemy.url", "postgresql+asyncpg://max:T1vbL25QfM4vB8agbtmywesqQWP5jsA9@dpg-cv6ulf5ds78s738ph8k0-a.oregon-postgres.render.com/db_3ahg?sslmode=require"
 )
 
 # Interpret the config file for Python logging.
