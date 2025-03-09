@@ -16,7 +16,7 @@ from app.core import (
 # access to the values within the .ini file in use.
 config = context.config
 config.set_main_option(
-    "sqlalchemy.url",f"{db_url}?async_fallback=True"
+    "sqlalchemy.url", f"{db_url}?async_fallback=True"
 )
 
 # Interpret the config file for Python logging.
