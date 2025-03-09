@@ -20,7 +20,7 @@ services:
       - .:/app
 
   db:
-    image: postgres:17.0
+    image: postgres:16
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
