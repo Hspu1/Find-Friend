@@ -74,9 +74,9 @@ def submit_name(new_name: str = Form()):
         <body>
             <div class="container">
                 <h1>Имя изменено на <span class="glow">{new_name}</span></h1>
-                <button onclick="window.location.href='http://127.0.0.1:8000/password_entering'">Войти под новым именем</button>
+                <button onclick="window.location.href='https://find-friend.onrender.com/password_entering'">Войти под новым именем</button>
                 <div class="back-button">
-                    <button onclick="window.location.href='http://127.0.0.1:8000/change_name'">Назад</button>
+                    <button onclick="window.location.href='https://find-friend.onrender.com/change_name'">Назад</button>
                 </div>
             </div>
         </body>

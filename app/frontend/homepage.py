@@ -255,7 +255,7 @@ def html_landing():
                         </form>
                     </div>
                 </div>
-                <button class="register-button" onclick="window.location.href='http://127.0.0.1:8000/login'">Зарегистрироваться</button>
+                <button class="register-button" onclick="window.location.href='https://find-friend.onrender.com/login'">Зарегистрироваться</button>
             </div>
         </div>
         <script>

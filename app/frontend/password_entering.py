@@ -79,7 +79,7 @@ def html_landing():
                     <input type="password" id="password" placeholder="Пароль" minlength="5" maxlength="12" required>
                     <button onclick="submitPassword()">Зарегестрироваться</button>
                 </div>
-                <button onclick="window.location.href='http://127.0.0.1:8000/login_with_name'">Назад</button>
+                <button onclick="window.location.href='https://find-friend.onrender.com/login_with_name'">Назад</button>
             </div>
 
             <script>
@@ -87,7 +87,7 @@ def html_landing():
                     const password = document.getElementById('password').value;
                     if (password.length >= 5 && password.length <= 12) {{
                         try {{
-                            const response = await fetch('http://127.0.0.1:8000/submit_password', {{
+                            const response = await fetch('https://find-friend.onrender.com/submit_password', {{
                                 method: 'POST',
                                 headers: {{
                                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -96,12 +96,12 @@ def html_landing():
                             }});
                             if (response.ok) {{
                                 alert('Данные успешно сохранены');
-                                window.location.href = 'http://127.0.0.1:8000/questionnaire';
+                                window.location.href = 'https://find-friend.onrender.com/questionnaire';
                             }} else {{
                                 const errorText = await response.text();
                                 console.error('Ошибка:', errorText);
                                 alert('Пользователь с таким именем уже существует');
-                                window.location.href = 'http://127.0.0.1:8000/change_name';
+                                window.location.href = 'https://find-friend.onrender.com/change_name';
                             }}
                         }} catch (error) {{
                             console.error('Ошибка сети:', error);

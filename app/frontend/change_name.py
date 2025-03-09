@@ -66,7 +66,7 @@ def html_landing():
                     <input type="text" name="new_name" placeholder="Введите новое имя" maxlength="20" required>
                     <button type="submit">Изменить имя</button>
                 </form>
-                <button onclick="window.location.href='http://127.0.0.1:8000/login_with_name'">Назад</button>
+                <button onclick="window.location.href='https://find-friend.onrender.com/login_with_name'">Назад</button>
             </div>
         </body>
         </html>

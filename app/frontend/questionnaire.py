@@ -206,14 +206,14 @@ async def html_landing():
                     otherContactInfo: document.getElementById("other-contact-info-input").value || null
                 }};
 
-                fetch("http://127.0.0.1:8000/save_questionnaire_user_data", {{
+                fetch("https://find-friend.onrender.com/save_questionnaire_user_data", {{
                     method: "POST",
                     headers: {{ "Content-Type": "application/json" }},
                     body: JSON.stringify(data)
                 }})
                 .then(response => {{
                     if (response.ok) {{
-                        window.location.href = "http://127.0.0.1:8000/showing_questionnaires";
+                        window.location.href = "https://find-friend.onrender.com/showing_questionnaires";
                     }} else {{
                         return response.text().then(text => {{ throw new Error(text); }});
                     }}

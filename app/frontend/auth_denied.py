@@ -63,7 +63,7 @@ def html_landing():
                 <div class="message">
                     Авторизация была отклонена
                 </div>
-                <button onclick="window.location.href='http://127.0.0.1:8000/'">
+                <button onclick="window.location.href='https://find-friend.onrender.com/'">
                     Назад
                 </button>
             </div>

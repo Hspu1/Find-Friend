@@ -56,8 +56,8 @@ app.include_router(questionnaire_router)
 app.include_router(showing_questionnaires)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run(
-        app="main:app", reload=False, use_colors=True,
-        host="127.0.0.1", port=8000
+        app="app.main:app", host="0.0.0.0",
+        port=80, reload=True
     )
