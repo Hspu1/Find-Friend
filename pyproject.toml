@@ -1,15 +1,13 @@
-[project]
+[tool.poetry]
 name = "find-friend"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Макс",email = "rumyantsev1m0s1@gmail.com"}
-]
+authors = ["Макс <rumyantsev1m0s1@gmail.com>"]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi (>=0.115.6,<0.116.0)",
-    "uvicorn[standart] (>=0.34.0,<0.35.0)",
+    "uvicorn[standard] (>=0.34.0,<0.35.0)",
     "orjson (>=3.10.15,<4.0.0)",
     "pydantic-settings (>=2.7.1,<3.0.0)",
     "sqlalchemy[asyncio] (>=2.0.37,<3.0.0)",
@@ -23,13 +21,6 @@ dependencies = [
     "pydantic (==2.9.2)",
     "bcrypt (>=4.2.1,<5.0.0)"
 ]
-# pip install poetry
-# poetry add fastapi uvicorn[standart] orjson pydantic pydantic-settings sqlalchemy[asyncio] alembic asyncpg python-multipart
-
-# .gitignore
-# /venv/
-# /.idea/
-# .env
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
