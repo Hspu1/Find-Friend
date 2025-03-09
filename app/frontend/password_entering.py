@@ -95,14 +95,16 @@ def html_landing():
                                 body: 'username=' + encodeURIComponent('{new_username}') + '&password=' + encodeURIComponent(password)
                             }});
                             if (response.ok) {{
-                                alert('Данные успешно сохранены');
-                                window.location.href = 'https://find-friend.onrender.com/questionnaire';
-                            }} else {{
-                                const errorText = await response.text();
-                                console.error('Ошибка:', errorText);
-                                alert('Пользователь с таким именем уже существует');
-                                window.location.href = 'https://find-friend.onrender.com/change_name';
-                            }}
+                            alert('Данные успешно сохранены');
+                            window.location.href = 'https://find-friend.onrender.com/questionnaire';
+                        }} else if (response.status === 409) {{
+                            alert('Пользователь с таким именем уже существует');
+                            window.location.href = 'https://find-friend.onrender.com/change_name';
+                        }} else {{
+                            const errorText = await response.text();
+                            console.error('Ошибка:', errorText);
+                            alert('Ошибка сервера');
+                        }}
                         }} catch (error) {{
                             console.error('Ошибка сети:', error);
                             alert('Ошибка сети');
