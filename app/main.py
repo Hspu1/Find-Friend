@@ -59,5 +59,5 @@ app.include_router(showing_questionnaires)
 if __name__ == "__main__":
     run(
         app="app.main:app", host="0.0.0.0",
-        port=80, reload=True
+        port=80, reload=True, use_colors=True
     )
