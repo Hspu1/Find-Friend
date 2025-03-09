@@ -15,7 +15,7 @@ db_user, db_password, db_host, db_port, db_name = (
 )
 db_url = (
     f"postgresql+asyncpg://{db_user}:{db_password}"
-    f"@{db_host}:{db_port}/{db_name}"
+    f"@{db_host}:{db_port}/{db_name}?ssl=require"
 )
 
 engine = create_async_engine(db_url)
