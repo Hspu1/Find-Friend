@@ -11,6 +11,7 @@ from app.backend import (
     submit_password_router, save_questionnaire_user_data_router,
     get_latest_username_router, login_router, get_all_users_data_router
 )
+from app.core import db_url
 from app.frontend import (
     homepage_router, login_with_name_router, auth_denied_router,
     change_name_router, submit_name_router, password_entering_router,
@@ -58,10 +59,16 @@ app.include_router(showing_questionnaires)
 
 
 if __name__ == "__main__":
-    alembic_cfg = config.Config("alembic.ini")
-    alembic_cfg.set_main_option("sqlalchemy.url", os.getenv("DB_URL"))
+    alembic_ini_path = "C:/Users/Макс/Find-Friend_xD/alembic.ini"
+    alembic_script_location = "C:/Users/Макс/Find-Friend_xD/alembic"
+
+    alembic_cfg = config.Config(alembic_ini_path)
+
+    alembic_cfg.set_main_option("sqlalchemy.url", db_url)
+    alembic_cfg.set_main_option("script_location", alembic_script_location)
 
     command.upgrade(alembic_cfg, "head")
+
     run(
         app="app.main:app", host="0.0.0.0",
         port=80, reload=True, use_colors=True
