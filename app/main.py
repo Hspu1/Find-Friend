@@ -61,19 +61,3 @@ if __name__ == "__main__":
         app="app.main:app", host="0.0.0.0",
         port=80, reload=True, use_colors=True
     )
-# import asyncpg
-# import asyncio
-#
-#
-# async def test_db():
-#     try:
-#         conn = await asyncpg.connect(
-#             "postgresql://max:T1vbL25QfM4vB8agbtmywesqQWP5jsA9@dpg-cv6ulf5ds78s738ph8k0-a.oregon-postgres.render.com/db_3ahg"
-#         )
-#         print("✅ Успешное подключение к БД")
-#         await conn.close()
-#
-#     except Exception as e:
-#         print(f"❌ Ошибка: {e}")
-#
-# asyncio.run(test_db())
