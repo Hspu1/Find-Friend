@@ -15,11 +15,8 @@ from app.core import (
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-# config.set_main_option(
-#     "sqlalchemy.url", f"{db_url}?async_fallback=True"
-# )
 config.set_main_option(
-    "sqlalchemy.url", "postgresql+asyncpg://max:T1vbL25QfM4vB8agbtmywesqQWP5jsA9@dpg-cv6ulf5ds78s738ph8k0-a.oregon-postgres.render.com/db_3ahg?sslmode=require"
+    "sqlalchemy.url", db_url
 )
 
 # Interpret the config file for Python logging.
